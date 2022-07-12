@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3840265537
+    locked: 0
+  - name: EffectsAfterFruits
+    uniqueID: 1632195317
+    locked: 0
+  - name: Shadows
+    uniqueID: 2115939309
+    locked: 0
+  - name: Fruits
+    uniqueID: 4145179401
+    locked: 0
+  - name: BladeEffects
+    uniqueID: 4199768901
+    locked: 0
