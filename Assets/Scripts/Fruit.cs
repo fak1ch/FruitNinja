@@ -7,13 +7,25 @@ public class Fruit : MonoBehaviour
     [SerializeField] private float _impulseMultiplierX = 10;
     [SerializeField] private float _impulseMultiplierY = 6;
 
+    [Space(10)]
     [SerializeField] private Vector2 _velocityVector;
+    [SerializeField] private float _timeUntilDestroy = 5f;
+
+    private void Start()
+    {
+        Destroy(gameObject, _timeUntilDestroy);
+    }
 
     private void Update()
     {
         transform.Translate(_velocityVector * Time.deltaTime * _gravityScale);
 
         _velocityVector.y = EarthGravity(_velocityVector.y);
+    }
+
+    public void CutThisFruit()
+    {
+        gameObject.SetActive(false);
     }
 
     public void SetPointWhereToFly(Vector3 pointPosition)
