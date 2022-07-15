@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class FruitsSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _fruitPrefabs;
+    [SerializeField] private FruitsContainer _fruitsContainer;
 
     [Space(10)]
     [SerializeField] private Transform _firstPoint;
@@ -16,6 +16,9 @@ public class FruitsSpawner : MonoBehaviour
 
     private void Start()
     {
+        if (_fruitsContainer == null)
+            _fruitsContainer = FindObjectOfType<FruitsContainer>();
+
         StartCoroutine(SpawnFruitsCorutine());
     }
 
@@ -33,11 +36,13 @@ public class FruitsSpawner : MonoBehaviour
 
     private void SpawnFruits()
     {
-        GameObject fruitPrefab = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
+        GameObject fruitPrefab = _fruitsContainer.GetRandomFruitPrefab();
         Vector2 spawnPosition = GetPointAtSegment(_firstPoint, _secondPoint, Random.Range(0f, 1f));
 
         var fruit = Instantiate(fruitPrefab, spawnPosition, Quaternion.identity);
-        fruit.GetComponent<Fruit>().SetPointWhereToFly(_pointFruitsFlyTo.position);
+
+        fruit.GetComponent<EarthGravity>().SetPointWhereToFly(_pointFruitsFlyTo.position);
+        _fruitsContainer.AddFruit(fruit.GetComponent<Fruit>());
     }
 
     private Vector2 GetPointAtSegment(Transform firstPoint, Transform secondPoint, float length)
