@@ -1,12 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour
+public class GameUnit : MonoBehaviour
 {
     [SerializeField] private GameObject _halfFruitPrefab;
     [SerializeField] private float _maxDistanceValueCutHalf = 0.3f;
-    private EarthGravity _earthGravity;
+    [SerializeField] private float _timeUntilDestroyAfterCut = 3f;
 
+    private EarthGravity _earthGravity;
     private SpriteRenderer _spriteRenderer;
+
+    private GameObject _fruitHalf;
 
     private void Start()
     {
@@ -14,7 +18,12 @@ public class Fruit : MonoBehaviour
         _earthGravity = GetComponent<EarthGravity>();
     }
 
-    public void CutThisFruit(Vector2 mousePosition)
+    protected virtual void CutResult()
+    {
+        Debug.Log("Cutted");
+    }
+
+    public virtual void CutThisGameUnit(Vector2 mousePosition)
     {
         float distance = Mathf.Abs(transform.position.x - mousePosition.x);
         Sprite[] sprites = new Sprite[2];
@@ -24,14 +33,16 @@ public class Fruit : MonoBehaviour
         else
             sprites = GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, 25);
 
-        var firstFruitHalf = Instantiate(_halfFruitPrefab, transform.position, transform.rotation);
+        _fruitHalf = Instantiate(_halfFruitPrefab, transform.position, transform.rotation);
 
-        firstFruitHalf.GetComponent<SpriteRenderer>().sprite = sprites[0];
+        _fruitHalf.GetComponent<SpriteRenderer>().sprite = sprites[0];
         _spriteRenderer.sprite = sprites[1];
 
-        firstFruitHalf.GetComponent<EarthGravity>().SetVelocityVector(_earthGravity.GetVelocityVector());
+        _fruitHalf.GetComponent<EarthGravity>().SetVelocityVector(_earthGravity.GetVelocityVector());
 
-        this.enabled = false;
+        CutResult();
+
+        StartCoroutine(DestroyFruitAfterTime());
     }
 
     public Sprite[] GetTwoSeparatedSprites(Texture2D texture, float cutLineProcent)
@@ -60,5 +71,12 @@ public class Fruit : MonoBehaviour
         sprites[1] = Sprite.Create(texture, cutRectangleSecond, new Vector2(pivotXSecondSprite, 0.5f), 80);
 
         return sprites;
+    }
+
+    private IEnumerator DestroyFruitAfterTime()
+    {
+        yield return new WaitForSeconds(_timeUntilDestroyAfterCut);
+        Destroy(_fruitHalf);
+        Destroy(this.gameObject);
     }
 }
