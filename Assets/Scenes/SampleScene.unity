@@ -156,6 +156,13 @@ MonoBehaviour:
   _firstPoint: {fileID: 721335686}
   _secondPoint: {fileID: 1398517540}
   _pointFruitsFlyTo: {fileID: 1997579952}
+  _spawnerData:
+    MaxTimeBetweenWaves: 3
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 6
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
 --- !u!4 &59949064
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitPrefabs:
   - {fileID: 3751616887309544490, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
-  _currentFruits: []
+  _bonusPrefabs:
+  - {fileID: 6911292352676217633, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
+  _bombPrefab: {fileID: 8720133779468021534, guid: c43c2a1ce18133e448b24444929ad602, type: 3}
+  _currentUnits: []
 --- !u!4 &1303467493
 Transform:
   m_ObjectHideFlags: 0
@@ -697,6 +707,13 @@ MonoBehaviour:
   _firstPoint: {fileID: 418012646}
   _secondPoint: {fileID: 2118190190}
   _pointFruitsFlyTo: {fileID: 1997579952}
+  _spawnerData:
+    MaxTimeBetweenWaves: 3
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 6
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
 --- !u!1 &1997579951
 GameObject:
   m_ObjectHideFlags: 0

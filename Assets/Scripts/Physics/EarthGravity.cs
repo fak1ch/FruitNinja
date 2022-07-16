@@ -9,7 +9,7 @@ public class EarthGravity : MonoBehaviour
     [SerializeField] private float _impulseMultiplierX = 15;
     [SerializeField] private float _impulseMultiplierY = 8;
     [SerializeField] private float _minRotateSpeed = 50f;
-    [SerializeField] private float _maxRotateSpeed = 400f;
+    [SerializeField] private float _maxRotateSpeed = 200f;
 
     [Space(10)]
     [SerializeField] private Vector2 _velocityVector;
