@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3751616887309544490
+--- !u!1 &1773766842292709168
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3751616887309544492}
-  - component: {fileID: 3751616887309544493}
-  - component: {fileID: 3751616887309544495}
-  - component: {fileID: 425811738717667521}
+  - component: {fileID: 1773766842292709174}
+  - component: {fileID: 1773766842292709175}
+  - component: {fileID: 7978127972464351626}
   m_Layer: 0
-  m_Name: Watermelon
+  m_Name: HalfFruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3751616887309544492
+--- !u!4 &1773766842292709174
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3751616887309544490}
+  m_GameObject: {fileID: 1773766842292709168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45442432, y: 0.45442432, z: 0.45442432}
+  m_LocalScale: {x: 0.4544243, y: 0.4544243, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3751616887309544493
+--- !u!212 &1773766842292709175
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3751616887309544490}
+  m_GameObject: {fileID: 1773766842292709168}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -149787895
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5b4e564b3809b143bfb85046d14ecdb, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,39 +80,25 @@ SpriteRenderer:
   m_Size: {x: 3.094369, y: 2.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3751616887309544495
+--- !u!114 &7978127972464351626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3751616887309544490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1336d4f4be610794195f8681831ad642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfFruitPrefab: {fileID: 1773766842292709168, guid: dbbd49cc32e748e4dbda4c0715da4e82, type: 3}
-  _maxDistanceValueCutHalf: 0.4
---- !u!114 &425811738717667521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3751616887309544490}
+  m_GameObject: {fileID: 1773766842292709168}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcd2ced43a7b255458ac1e770e9b95a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityScale: 9.81
-  _airDrug: 10
+  _airDrug: 8
   _impulseMultiplierX: 15
   _impulseMultiplierY: 8
-  _minRotateSpeed: 50
-  _maxRotateSpeed: 200
+  _minRotateSpeed: 25
+  _maxRotateSpeed: 100
   _velocityVector: {x: 0, y: 0}

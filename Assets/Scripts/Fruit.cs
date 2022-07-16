@@ -2,43 +2,63 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    [SerializeField] private float _gravityScale = 9.81f;
-    [SerializeField] private float _airDrug = 2f;
-    [SerializeField] private float _impulseMultiplierX = 10;
-    [SerializeField] private float _impulseMultiplierY = 6;
+    [SerializeField] private GameObject _halfFruitPrefab;
+    [SerializeField] private float _maxDistanceValueCutHalf = 0.3f;
+    private EarthGravity _earthGravity;
 
-    [SerializeField] private Vector2 _velocityVector;
+    private SpriteRenderer _spriteRenderer;
 
-    private void Update()
+    private void Start()
     {
-        transform.Translate(_velocityVector * Time.deltaTime * _gravityScale);
-
-        _velocityVector.y = EarthGravity(_velocityVector.y);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _earthGravity = GetComponent<EarthGravity>();
     }
 
-    public void SetPointWhereToFly(Vector3 pointPosition)
+    public void CutThisFruit(Vector2 mousePosition)
     {
-        Vector2 _moveDirection = pointPosition - transform.position;
+        float distance = Mathf.Abs(transform.position.x - mousePosition.x);
+        Sprite[] sprites = new Sprite[2];
 
-        float impulseY = Random.Range(_impulseMultiplierY, _impulseMultiplierY * 2);
+        if (distance < _maxDistanceValueCutHalf)
+            sprites = GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, 50);
+        else
+            sprites = GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, 25);
 
-        _velocityVector = new Vector2(_moveDirection.x / _impulseMultiplierX, _moveDirection.y / impulseY);
+        var firstFruitHalf = Instantiate(_halfFruitPrefab, transform.position, transform.rotation);
+
+        firstFruitHalf.GetComponent<SpriteRenderer>().sprite = sprites[0];
+        _spriteRenderer.sprite = sprites[1];
+
+        firstFruitHalf.GetComponent<EarthGravity>().SetVelocityVector(_earthGravity.GetVelocityVector());
+
+        this.enabled = false;
     }
 
-    private float EarthGravity(float number)
+    public Sprite[] GetTwoSeparatedSprites(Texture2D texture, float cutLineProcent)
     {
-        if (number != 0)
+        Sprite[] sprites = new Sprite[2];
+
+        int firstHalfWidth = (int)(texture.width * cutLineProcent / 100);
+
+        float pivotXFirstSprite = 0;
+        float pivotXSecondSprite = 0;
+
+        if (cutLineProcent == 50)
         {
-            if (_airDrug != 0)
-            {
-                number -= _gravityScale * Time.deltaTime / _airDrug;
-            }
-            else
-            {
-                number -= _gravityScale * Time.deltaTime;
-            }
+            pivotXFirstSprite = 1;
+            pivotXSecondSprite = 0;
+        }
+        else if (cutLineProcent == 25)
+        {
+            pivotXFirstSprite = 1.75f;
+            pivotXSecondSprite = 0.3f;
         }
 
-        return number;
+        Rect cutRectangleFirst = new Rect(0f, 0f, firstHalfWidth, texture.height);
+        Rect cutRectangleSecond = new Rect(firstHalfWidth, 0f, texture.width - firstHalfWidth, texture.height);
+        sprites[0] = Sprite.Create(texture, cutRectangleFirst, new Vector2(pivotXFirstSprite, 0.5f), 80);
+        sprites[1] = Sprite.Create(texture, cutRectangleSecond, new Vector2(pivotXSecondSprite, 0.5f), 80);
+
+        return sprites;
     }
 }
