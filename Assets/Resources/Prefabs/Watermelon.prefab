@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _halfFruitPrefab: {fileID: 1773766842292709168, guid: dbbd49cc32e748e4dbda4c0715da4e82, type: 3}
   _maxDistanceValueCutHalf: 0.5
+  _timeUntilDestroyAfterCut: 3
+  _scorePrice: 1
 --- !u!114 &425811738717667521
 MonoBehaviour:
   m_ObjectHideFlags: 0

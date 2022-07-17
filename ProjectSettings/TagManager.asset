@@ -44,15 +44,18 @@ TagManager:
   - name: Background
     uniqueID: 3840265537
     locked: 0
-  - name: Fruits
+  - name: EffectsAfterGameUnits
     uniqueID: 4145179401
     locked: 0
-  - name: EffectsAfterFruits
+  - name: Shadows
     uniqueID: 1632195317
     locked: 0
-  - name: Shadows
+  - name: GameUnits
     uniqueID: 2115939309
     locked: 0
   - name: BladeEffects
     uniqueID: 4199768901
+    locked: 0
+  - name: UI
+    uniqueID: 267713201
     locked: 0

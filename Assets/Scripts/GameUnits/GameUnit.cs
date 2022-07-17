@@ -20,7 +20,7 @@ public class GameUnit : MonoBehaviour
 
     protected virtual void CutResult()
     {
-        Debug.Log("Cutted");
+
     }
 
     public virtual void CutThisGameUnit(Vector2 mousePosition)
@@ -67,8 +67,8 @@ public class GameUnit : MonoBehaviour
 
         Rect cutRectangleFirst = new Rect(0f, 0f, firstHalfWidth, texture.height);
         Rect cutRectangleSecond = new Rect(firstHalfWidth, 0f, texture.width - firstHalfWidth, texture.height);
-        sprites[0] = Sprite.Create(texture, cutRectangleFirst, new Vector2(pivotXFirstSprite, 0.5f), 80);
-        sprites[1] = Sprite.Create(texture, cutRectangleSecond, new Vector2(pivotXSecondSprite, 0.5f), 80);
+        sprites[0] = Sprite.Create(texture, cutRectangleFirst, new Vector2(pivotXFirstSprite, 0.5f), 100);
+        sprites[1] = Sprite.Create(texture, cutRectangleSecond, new Vector2(pivotXSecondSprite, 0.5f), 100);
 
         return sprites;
     }

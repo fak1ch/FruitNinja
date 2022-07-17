@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
+    public event Action<int, int> OnFruitsCutten;
+
     [SerializeField] private float _minBladeSpeedForCut = 0.01f;
     [SerializeField] private float _bladeRadius = 0.2f;
     [SerializeField] private bool _bladeCanCutFruit;
@@ -69,10 +70,22 @@ public class Blade : MonoBehaviour
         if (gameUnits.Count == 0)
             return;
 
+        int fruitCuttenCount = 0;
+        int totalScore = 0;
+
         for(int i = 0; i < gameUnits.Count; i++)
         {
             _fruitsContainer.RemoveUnit(gameUnits[i]);
             gameUnits[i].CutThisGameUnit(mousePosition);
+
+            if (gameUnits[i].gameObject.TryGetComponent(out Fruit fruit) == true)
+            {
+                fruitCuttenCount++;
+                totalScore += fruit.GetScorePrice();
+            }
         }
+
+        if (fruitCuttenCount > 0)
+            OnFruitsCutten?.Invoke(fruitCuttenCount, totalScore);
     }
 }
