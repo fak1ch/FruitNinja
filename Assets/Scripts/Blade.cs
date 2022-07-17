@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    public event Action<int> OnFruitsCutten;
+    public event Action<int, int> OnFruitsCutten;
 
     [SerializeField] private float _minBladeSpeedForCut = 0.01f;
     [SerializeField] private float _bladeRadius = 0.2f;
@@ -71,6 +71,7 @@ public class Blade : MonoBehaviour
             return;
 
         int fruitCuttenCount = 0;
+        int totalScore = 0;
 
         for(int i = 0; i < gameUnits.Count; i++)
         {
@@ -78,10 +79,13 @@ public class Blade : MonoBehaviour
             gameUnits[i].CutThisGameUnit(mousePosition);
 
             if (gameUnits[i].gameObject.TryGetComponent(out Fruit fruit) == true)
+            {
                 fruitCuttenCount++;
+                totalScore += fruit.GetScorePrice();
+            }
         }
 
         if (fruitCuttenCount > 0)
-            OnFruitsCutten?.Invoke(fruitCuttenCount);
+            OnFruitsCutten?.Invoke(fruitCuttenCount, totalScore);
     }
 }

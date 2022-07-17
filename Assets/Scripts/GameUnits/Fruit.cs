@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Fruit : GameUnit
 {
-    protected override void CutResult()
+    [SerializeField] private int _scorePrice = 10;
+
+    public int GetScorePrice()
     {
-        Debug.Log("Add score");
+        return _scorePrice;
     }
 }
