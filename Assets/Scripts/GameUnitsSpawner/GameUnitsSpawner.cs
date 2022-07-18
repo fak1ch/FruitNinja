@@ -13,7 +13,7 @@ public class GameUnitsSpawner : MonoBehaviour
     [SerializeField] private Transform _secondPoint;
 
     [Space(10)]
-    [SerializeField] private Transform _pointFruitsFlyTo;
+    [SerializeField] private Transform[] _pointsFruitsFlyTo;
 
     [Space(10)]
     [SerializeField] private SpawnerData _spawnerData;
@@ -80,7 +80,7 @@ public class GameUnitsSpawner : MonoBehaviour
 
             var gameUnit = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
-            gameUnit.GetComponent<EarthGravity>().SetPointWhereToFly(_pointFruitsFlyTo.position);
+            gameUnit.GetComponent<EarthGravity>().SetPointWhereToFly(GetRandomPointPositionFlyTo());
             _fruitsContainer.AddUnit(gameUnit.GetComponent<GameUnit>());
         }
     }
@@ -98,5 +98,10 @@ public class GameUnitsSpawner : MonoBehaviour
         Vector2 pointPosition = (1 - length) * firstPoint.position + length * secondPoint.position;
 
         return pointPosition;
+    }
+
+    private Vector2 GetRandomPointPositionFlyTo()
+    {
+        return _pointsFruitsFlyTo[Random.Range(0, _pointsFruitsFlyTo.Length)].position;
     }
 }
