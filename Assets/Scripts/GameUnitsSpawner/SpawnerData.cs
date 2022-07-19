@@ -3,6 +3,8 @@ using System;
 [Serializable]
 public class SpawnerData
 {
+    public float MaxTimeBetweenUnitSpawns = 0.2f;
+    public float MinTimeBetweenUnitSpawns = 0.05f;
     public float MaxTimeBetweenWaves = 3f;
     public int MinGameUnitsInWave = 1;
     public int MaxGameUnitsInWave = 6;

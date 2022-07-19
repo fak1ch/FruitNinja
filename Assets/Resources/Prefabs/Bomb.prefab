@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -149787895
-  m_SortingLayer: 2
+  m_SortingLayerID: 2115939309
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a5b4e564b3809b143bfb85046d14ecdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,13 +96,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd2ced43a7b255458ac1e770e9b95a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityScale: 9.81
-  _airDrug: 10
-  _impulseMultiplierX: 15
-  _impulseMultiplierY: 8
-  _minRotateSpeed: 50
-  _maxRotateSpeed: 200
-  _velocityVector: {x: 0, y: 0}
+  _data:
+    _physicalScriptableObject: {fileID: 11400000, guid: 94c7613afcbbc4e42ab977c5985f7bfd, type: 2}
+    GravityScale: 9.81
+    AirDrug: 10
+    MinImpulseX: 5
+    MaxImpulseX: 10
+    MinImpulseY: 5
+    MaxImpulseY: 10
+    MinRotateSpeed: 50
+    MaxRotateSpeed: 200
+  _velocity: {x: 0, y: 0}
 --- !u!114 &8720133779468021535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c706cb987ec3b5c43ae92573fb5f371d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _halfFruitPrefab: {fileID: 1773766842292709168, guid: dbbd49cc32e748e4dbda4c0715da4e82, type: 3}
-  _maxDistanceValueCutHalf: 0.3
-  _timeUntilDestroyAfterCut: 3
+  _halfPrefabsPool: []
+  _minCutLineProcent: 15
+  _maxCutLineProcent: 85
+  _physicalMovement: {fileID: 5259220659167757301}
+  _spriteRenderer: {fileID: 8720133779468021529}

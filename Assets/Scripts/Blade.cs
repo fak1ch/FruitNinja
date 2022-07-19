@@ -11,7 +11,7 @@ public class Blade : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private TrailRenderer _trailRenderer;
-    [SerializeField] private GameUnitsContainer _fruitsContainer;
+    [SerializeField] private UnitsContainer _fruitsContainer;
 
     private Vector3 _lastFrameMousePosition;
     private Vector3 _currentFrameMousePosition;
@@ -21,7 +21,6 @@ public class Blade : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
-        _trailRenderer = GetComponent<TrailRenderer>();
     }
 
     private void Update()
@@ -65,7 +64,7 @@ public class Blade : MonoBehaviour
         float x = _currentFrameMousePosition.x;
         float y = _currentFrameMousePosition.y;
 
-        var gameUnits = _fruitsContainer.GetUnitsWhichLocatedInCircle(x, y, _bladeRadius);
+        var gameUnits = _fruitsContainer.GetUnitsLocatedInCircle(x, y, _bladeRadius);
 
         if (gameUnits.Count == 0)
             return;
