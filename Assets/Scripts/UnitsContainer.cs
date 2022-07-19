@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUnitsContainer : MonoBehaviour
+public class UnitsContainer : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _fruitPrefabs;
-    [SerializeField] private GameObject[] _bonusPrefabs;
-    [SerializeField] private GameObject _bombPrefab;
+    [SerializeField] private GameUnit[] _fruitPrefabs;
+    [SerializeField] private GameUnit[] _bonusPrefabs;
+    [SerializeField] private GameUnit _bombPrefab;
 
     [SerializeField] private List<GameUnit> _currentUnits = new List<GameUnit>();
 
@@ -20,26 +20,26 @@ public class GameUnitsContainer : MonoBehaviour
         _currentUnits.Remove(gameUnit);
     }
 
-    public GameObject GetRandomFruitPrefab()
+    public GameUnit GetRandomFruitPrefab()
     {
-        GameObject fruit = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
+        GameUnit fruit = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
 
         return fruit;
     }
 
-    public GameObject GetRandomBonusPrefab()
+    public GameUnit GetRandomBonusPrefab()
     {
-        GameObject bonus = _bonusPrefabs[Random.Range(0, _bonusPrefabs.Length)];
+        GameUnit bonus = _bonusPrefabs[Random.Range(0, _bonusPrefabs.Length)];
 
         return bonus;
     }
 
-    public GameObject GetBombPrefab()
+    public GameUnit GetBombPrefab()
     {
         return _bombPrefab;
     }
 
-    public List<GameUnit> GetUnitsWhichLocatedInCircle(float x, float y, float radius)
+    public List<GameUnit> GetUnitsLocatedInCircle(float x, float y, float radius)
     {
         List<GameUnit> gameUnits = new List<GameUnit>();
 

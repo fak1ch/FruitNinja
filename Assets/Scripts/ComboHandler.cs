@@ -42,6 +42,7 @@ public class ComboHandler : MonoBehaviour
     private IEnumerator CheckTimeBetweenCuts()
     {
         yield return new WaitForSeconds(_timeBetweenCuts);
+
         if (_cutsCount >= _minCutsForCombo)
         {
             HappenedComboCuts();
