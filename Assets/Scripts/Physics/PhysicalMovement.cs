@@ -9,21 +9,8 @@ public class PhysicalMovement : MonoBehaviour
     [Space(10)]
     [SerializeField] Vector2 _velocity;
 
-    private float _rotateMultiplier = 1f;
-    private float _rotateSpeed;
-
     private void Awake()
     {
-        _data.SetValuesFromSctiptableObject();
-    }
-
-    private void Start()
-    {
-        if (Random.Range(0, 2) == 0)
-            _rotateMultiplier = -1f;
-
-        _rotateSpeed = Random.Range(_data.MinRotateSpeed, _data.MaxRotateSpeed);
-
         _data.SetValuesFromSctiptableObject();
     }
 
@@ -34,13 +21,6 @@ public class PhysicalMovement : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, newPosition, _data.GravityScale);
 
         _velocity.y = ApplyGravity(_velocity.y);
-
-        RotateAroundLocal();
-    }
-
-    private void RotateAroundLocal()
-    {
-        transform.Rotate(0, 0, _rotateSpeed * Time.deltaTime * _rotateMultiplier);
     }
 
     public void SetPointWhereToFly(Vector3 pointPosition)

@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HalfUnit : MonoBehaviour
+public class HalfUnit : GameUnit
 {
-    [SerializeField] private float _minPlusSpeed = 1.5f;
-    [SerializeField] private float _manPlusSpeed = 2.5f;
-    [SerializeField] private float _timeUntilDestroy = 3f;
-
     [Space(10)]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private PhysicalMovement _earthGravity;
+    [SerializeField] private float _minPlusSpeed = 1.5f;
+    [SerializeField] private float _maxPlusSpeed = 2.5f;
+    [SerializeField] private float _timeUntilDestroy = 3f;
 
     public void SpawnHalfUnit(Sprite sprite, Vector2 newVelocity, bool isLeftHalf)
     {
         gameObject.SetActive(true);
         transform.parent = null;
-        _earthGravity.SetVelocityVector(newVelocity);
+        _physicalMovement.SetVelocityVector(newVelocity);
 
         SetSprite(sprite);
         RandomIncreaseVelocityX(isLeftHalf);
@@ -30,14 +27,14 @@ public class HalfUnit : MonoBehaviour
 
     private void RandomIncreaseVelocityX(bool isLeftHalf)
     {
-        Vector2 velocity = _earthGravity.GetVelocityVector();
+        Vector2 velocity = _physicalMovement.GetVelocityVector();
 
-        float plusSpeed = Random.Range(_minPlusSpeed, _manPlusSpeed);
+        float plusSpeed = Random.Range(_minPlusSpeed, _maxPlusSpeed);
 
         plusSpeed *= isLeftHalf ? -1 : 1;
         velocity.x += plusSpeed;
 
-        _earthGravity.SetVelocityVector(velocity);
+        _physicalMovement.SetVelocityVector(velocity);
     }
 
     private IEnumerator DestroyAfterTime()

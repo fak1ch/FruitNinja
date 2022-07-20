@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreezeBonus : GameUnit
+public class FreezeBonus : UnitCanCut
 {
     protected override void CutResult()
     {

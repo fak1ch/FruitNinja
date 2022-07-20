@@ -882,10 +882,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fruitPrefabs:
-  - {fileID: 3751616887309544495, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
+  - {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
   _bonusPrefabs:
-  - {fileID: 6911292352676217632, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
-  _bombPrefab: {fileID: 8720133779468021535, guid: c43c2a1ce18133e448b24444929ad602, type: 3}
+  - {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
+  _bombPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
   _currentUnits: []
 --- !u!4 &1303467493
 Transform:

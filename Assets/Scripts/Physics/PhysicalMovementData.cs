@@ -13,8 +13,6 @@ class PhysicalMovementData
     public float MaxImpulseX;
     public float MinImpulseY;
     public float MaxImpulseY;
-    public float MinRotateSpeed;
-    public float MaxRotateSpeed;
 
     public void SetValuesFromSctiptableObject()
     {
@@ -24,7 +22,5 @@ class PhysicalMovementData
         MaxImpulseX = _physicalScriptableObject.MaxImpulseX;
         MinImpulseY = _physicalScriptableObject.MinImpulseY;
         MaxImpulseY = _physicalScriptableObject.MaxImpulseY;
-        MinRotateSpeed = _physicalScriptableObject.MinRotateSpeed;
-        MaxRotateSpeed = _physicalScriptableObject.MaxRotateSpeed;
     }
 }
