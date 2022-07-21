@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18978e3fce948344d87df77aa98fd0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minShadowScale: 0.3
-  _shadowMaxOffset: {x: 1.1, y: 0}
+  _minShadowScale: 1.4
+  _shadowMaxOffset: {x: 0.6, y: 0}
   _spriteRenderer: {fileID: 6136407630389483965}
   _physicalRotation: {fileID: 2696156998357270720}
 --- !u!114 &2696156998357270720
