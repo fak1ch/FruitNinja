@@ -4,51 +4,54 @@ using UnityEngine;
 
 public class UnitsContainer : MonoBehaviour
 {
-    [SerializeField] private GameUnit[] _fruitPrefabs;
-    [SerializeField] private GameUnit[] _bonusPrefabs;
-    [SerializeField] private GameUnit _bombPrefab;
+    [SerializeField] private UnitCanCut[] _fruitPrefabs;
+    [SerializeField] private UnitCanCut[] _bonusPrefabs;
+    [SerializeField] private UnitCanCut _bombPrefab;
 
-    [SerializeField] private List<GameUnit> _currentUnits = new List<GameUnit>();
+    [SerializeField] private List<UnitCanCut> _currentUnits = new List<UnitCanCut>();
 
-    public void AddUnit(GameUnit gameUnit)
+    public void AddUnit(UnitCanCut gameUnit)
     {
         _currentUnits.Add(gameUnit);
     }
 
-    public void RemoveUnit(GameUnit gameUnit)
+    public void RemoveUnit(UnitCanCut gameUnit)
     {
         _currentUnits.Remove(gameUnit);
     }
 
-    public GameUnit GetRandomFruitPrefab()
+    public UnitCanCut GetRandomFruitPrefab()
     {
-        GameUnit fruit = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
+        UnitCanCut fruit = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
 
         return fruit;
     }
 
-    public GameUnit GetRandomBonusPrefab()
+    public UnitCanCut GetRandomBonusPrefab()
     {
-        GameUnit bonus = _bonusPrefabs[Random.Range(0, _bonusPrefabs.Length)];
+        UnitCanCut bonus = _bonusPrefabs[Random.Range(0, _bonusPrefabs.Length)];
 
         return bonus;
     }
 
-    public GameUnit GetBombPrefab()
+    public UnitCanCut GetBombPrefab()
     {
         return _bombPrefab;
     }
 
-    public List<GameUnit> GetUnitsLocatedInCircle(float x, float y, float radius)
+    public List<UnitCanCut> GetUnitsLocatedInCircle(float x, float y, float radius)
     {
-        List<GameUnit> gameUnits = new List<GameUnit>();
+        List<UnitCanCut> gameUnits = new List<UnitCanCut>();
 
         for(int i = 0; i < _currentUnits.Count; i++)
         {
             float fruitX = _currentUnits[i].transform.position.x;
             float fruitY = _currentUnits[i].transform.position.y;
 
-            if (Mathf.Pow(x - fruitX, 2) + Mathf.Pow(y - fruitY, 2) <= Mathf.Pow(radius, 2))
+            float dx = x - fruitX;
+            float dy = y - fruitY;
+
+            if (dx * dx + dy * dy <= radius * radius)
             {
                 gameUnits.Add(_currentUnits[i]);
             }

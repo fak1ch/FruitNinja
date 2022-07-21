@@ -12,6 +12,4 @@ public class PhysicalScriptableObject : ScriptableObject
     public float MaxImpulseX;
     public float MinImpulseY;
     public float MaxImpulseY;
-    public float MinRotateSpeed;
-    public float MaxRotateSpeed;
 }

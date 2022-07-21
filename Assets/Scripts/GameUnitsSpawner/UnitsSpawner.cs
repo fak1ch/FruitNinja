@@ -45,7 +45,7 @@ public class UnitsSpawner : MonoBehaviour
     {
         int gameUnitsMaxCount = Random.Range(_spawnerData.MinGameUnitsInWave, _spawnerData.MaxGameUnitsInWave + 1);
 
-        List<GameUnit> gameUnitPrefabs = new List<GameUnit>(gameUnitsMaxCount);
+        List<UnitCanCut> gameUnitPrefabs = new List<UnitCanCut>(gameUnitsMaxCount);
 
         int unitsCount = Random.Range(_spawnerData.MinFruitsInWave, gameUnitsMaxCount);
         for(int i = 0; i < unitsCount; i++)
@@ -59,7 +59,7 @@ public class UnitsSpawner : MonoBehaviour
         StartCoroutine(SpawnGameUnits(gameUnitPrefabs));
     }
 
-    private void AddUnitToList(List<GameUnit> units, int procent, GameUnit unitPrefab)
+    private void AddUnitToList(List<UnitCanCut> units, int procent, UnitCanCut unitPrefab)
     {
         if (_utils.CheckRandomless(procent) == true)
         {
@@ -74,7 +74,7 @@ public class UnitsSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnGameUnits(List<GameUnit> gameUnits)
+    private IEnumerator SpawnGameUnits(List<UnitCanCut> gameUnits)
     {
         float timeBetweenUnitSpawns = Random.Range(_spawnerData.MinTimeBetweenUnitSpawns, _spawnerData.MaxTimeBetweenUnitSpawns);
 
@@ -83,7 +83,7 @@ public class UnitsSpawner : MonoBehaviour
             var prefab = gameUnits[i];
             Vector2 spawnPosition = GetPointAtSegment(_firstPoint, _secondPoint, Random.Range(0f, 1f));
 
-            GameUnit gameUnit = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            UnitCanCut gameUnit = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
             gameUnit.GetPhysicalMovement.SetPointWhereToFly(GetRandomPointFlyTo());
             _unitsContainer.AddUnit(gameUnit);

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Fruit : GameUnit
+public class Fruit : UnitCanCut
 {
     [SerializeField] private int _scorePrice = 10;
 

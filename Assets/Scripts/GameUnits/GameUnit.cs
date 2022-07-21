@@ -1,45 +1,58 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class GameUnit : MonoBehaviour
 {
-    [SerializeField] private HalfUnit[] _halfPrefabsPool;
-    [SerializeField] private int _minCutLineProcent = 15;
-    [SerializeField] private int _maxCutLineProcent = 85;
+    [Space(10)]
+    [SerializeField] protected Color _shadowColor;
+    [SerializeField] protected UnitShadow _unitShadow;
+    [SerializeField] protected PhysicalMovement _physicalMovement;
+    [SerializeField] protected PhysicalRotation _physicalRotation;
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
 
     [Space(10)]
-    [SerializeField] private PhysicalMovement _physicalMovement;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] protected float _startScale;
+    [SerializeField] protected float _endScale;
+    [SerializeField] protected float _scaleSpeed;
 
-    private Utils _utils;
+    protected Utils _utils;
+    protected GameObject _spriteObject;
+    protected bool _isCanChange = true;
+
     public PhysicalMovement GetPhysicalMovement => _physicalMovement;
 
     private void Start()
     {
         _utils = new Utils();
+
+        _spriteObject = _physicalRotation.gameObject;
+        _spriteObject.transform.localScale = new Vector2(_startScale, _startScale);
+
+        _unitShadow.SetShadowSprite(_spriteRenderer.sprite, _shadowColor);
+        _unitShadow.SetShadowRotation(_physicalRotation);
+        _unitShadow.SetShadowScaling(_startScale, _endScale);
     }
 
-    protected virtual void CutResult()
+    private void Update()
     {
-
+        if (_isCanChange)
+            ChangeUnitScale();
     }
 
-    public virtual void CutThisGameUnit(Vector2 mousePosition)
+    private void ChangeUnitScale()
     {
-        float distance = Mathf.Abs(transform.position.x - mousePosition.x);
-        Sprite[] sprites = new Sprite[2];
+        Vector2 currentScale = _spriteObject.transform.localScale;
 
-        int cutLineProcent = Random.Range(_minCutLineProcent, _maxCutLineProcent);
+        currentScale.x -= Time.deltaTime * _scaleSpeed;
+        currentScale.y -= Time.deltaTime * _scaleSpeed;
 
-        sprites = _utils.GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, cutLineProcent);
+        currentScale.x = Mathf.Clamp(currentScale.x, _endScale, currentScale.x);
+        currentScale.y = Mathf.Clamp(currentScale.y, _endScale, currentScale.y);
 
-        Vector2 velocity = _physicalMovement.GetVelocityVector();
+        _spriteObject.transform.localScale = currentScale;
 
-        _halfPrefabsPool[0].SpawnHalfUnit(sprites[0], velocity, true);
-        _halfPrefabsPool[1].SpawnHalfUnit(sprites[1], velocity, false);
-
-        CutResult();
-
-        Destroy(gameObject);
+        _unitShadow.ChangeShadowScale(_spriteObject.transform.localScale);
+        _unitShadow.ChangeShadowPosition(_spriteObject.transform.position, _spriteObject.transform.localScale);
     }
 }
