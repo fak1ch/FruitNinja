@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 9098253136942400000}
   _minCutLineProcent: 15
   _maxCutLineProcent: 85
+  _bladeColorCut: {r: 1, g: 0.03761355, b: 0, a: 0}
   _scorePrice: 1
 --- !u!114 &5048751070324639291
 MonoBehaviour:

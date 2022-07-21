@@ -1511,7 +1511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBladeSpeedForCut: 0.01
   _bladeRadius: 1
-  _bladeCanCutFruit: 0
+  _speedChangeBladeColor: 1
+  _bladeCanCut: 0
   _trailRenderer: {fileID: 1671175401}
   _fruitsContainer: {fileID: 1303467492}
 --- !u!96 &1671175401
