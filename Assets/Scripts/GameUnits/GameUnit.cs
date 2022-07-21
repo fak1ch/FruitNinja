@@ -12,13 +12,13 @@ public class GameUnit : MonoBehaviour
     [SerializeField] protected SpriteRenderer _spriteRenderer;
 
     [Space(10)]
-    [SerializeField] private float _startScale;
-    [SerializeField] private float _endScale;
-    [SerializeField] private float _scaleSpeed;
+    [SerializeField] protected float _startScale;
+    [SerializeField] protected float _endScale;
+    [SerializeField] protected float _scaleSpeed;
 
     protected Utils _utils;
-
-    private GameObject _spriteObject;
+    protected GameObject _spriteObject;
+    protected bool _isCanChange = true;
 
     public PhysicalMovement GetPhysicalMovement => _physicalMovement;
 
@@ -36,7 +36,8 @@ public class GameUnit : MonoBehaviour
 
     private void Update()
     {
-        ChangeUnitScale();
+        if (_isCanChange)
+            ChangeUnitScale();
     }
 
     private void ChangeUnitScale()

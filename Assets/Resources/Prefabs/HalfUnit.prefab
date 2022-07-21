@@ -72,6 +72,9 @@ MonoBehaviour:
   _physicalMovement: {fileID: 7978127972464351626}
   _physicalRotation: {fileID: 492433688116190927}
   _spriteRenderer: {fileID: 2697853290196730502}
+  _startScale: 1
+  _endScale: 0.1
+  _scaleSpeed: 0.1
   _minPlusSpeed: 0.1
   _maxPlusSpeed: 2.5
   _timeUntilDestroy: 3
@@ -189,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136407630389483966, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6136407630389483966, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -231,6 +234,10 @@ PrefabInstance:
       propertyPath: _targetForRotate
       value: 
       objectReference: {fileID: 4293065510626824806}
+    - target: {fileID: 6136407630389483967, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
+      propertyPath: _shadowMaxOffset.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
 --- !u!4 &832608653875519194 stripped

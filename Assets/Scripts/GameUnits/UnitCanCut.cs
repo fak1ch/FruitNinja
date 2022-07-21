@@ -24,9 +24,12 @@ public class UnitCanCut : GameUnit
         sprites = _utils.GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, cutLineProcent);
 
         Vector2 velocity = _physicalMovement.GetVelocityVector();
+        Vector2 newShadowPosition = (Vector2)transform.position + _unitShadow.Offset;
 
-        _halfPrefabsPool[0].SpawnHalfUnit(sprites[0], velocity, true);
-        _halfPrefabsPool[1].SpawnHalfUnit(sprites[1], velocity, false);
+        float scale = _unitShadow.transform.lossyScale.x;
+
+        _halfPrefabsPool[0].SpawnHalfUnit(sprites[0], velocity, newShadowPosition, scale, true);
+        _halfPrefabsPool[1].SpawnHalfUnit(sprites[1], velocity, newShadowPosition, scale, false);
 
         CutResult();
 

@@ -21,6 +21,7 @@ public class Blade : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
+        _trailRenderer.endColor = Color.red;
     }
 
     private void Update()
