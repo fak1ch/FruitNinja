@@ -14,12 +14,12 @@ public class HalfUnit : GameUnit
         gameObject.SetActive(true);
         transform.parent = null;
         _physicalMovement.SetVelocityVector(newVelocity);
+
         _isCanChange = false;
         _unitShadow.SetShadowPosition(newPosition);
         _unitShadow.transform.parent = null;
         _unitShadow.transform.localScale = new Vector2(newScale, newScale);
         _unitShadow.transform.parent = this.gameObject.transform;
-
 
         SetSprite(sprite);
         RandomIncreaseVelocityX(isLeftHalf);

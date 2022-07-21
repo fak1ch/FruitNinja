@@ -9,6 +9,11 @@ public class UnitCanCut : GameUnit
     [SerializeField] private int _minCutLineProcent = 15;
     [SerializeField] private int _maxCutLineProcent = 85;
 
+    [Space(10)]
+    [SerializeField] private Color _bladeColorCut;
+
+    public Color GetBladeColorCut => _bladeColorCut;
+
     protected virtual void CutResult()
     {
 
