@@ -22,11 +22,10 @@ public class UnitCanCut : GameUnit
     public virtual void CutThisGameUnit(Vector2 mousePosition)
     {
         float distance = Mathf.Abs(transform.position.x - mousePosition.x);
-        Sprite[] sprites = new Sprite[2];
 
         int cutLineProcent = Random.Range(_minCutLineProcent, _maxCutLineProcent);
 
-        sprites = _utils.GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, cutLineProcent);
+        var sprites = _utils.GetTwoSeparatedSprites(_spriteRenderer.sprite.texture, cutLineProcent);
 
         Vector2 velocity = _physicalMovement.GetVelocityVector();
         Vector2 newShadowPosition = (Vector2)transform.position + _unitShadow.Offset;
