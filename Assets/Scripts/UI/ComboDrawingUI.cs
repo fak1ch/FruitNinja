@@ -6,6 +6,7 @@ public class ComboDrawingUI : MonoBehaviour
     [SerializeField] private GameObject _comboPanel;
     [SerializeField] private Animator _animator;
     [SerializeField] private TextMeshProUGUI _indexText;
+    [SerializeField] private TextMeshProUGUI _countText;
 
     private int _animIDShowComboTrigger;
     private int _animIDStopComboTrigger;
@@ -19,6 +20,7 @@ public class ComboDrawingUI : MonoBehaviour
     public void ShowComboPanel(int cuttenFruitsCount)
     {
         _indexText.text = $"{cuttenFruitsCount}x";
+        _countText.text = $"{cuttenFruitsCount}";
 
         if (IsAnimationPlaying("Base Layer.FruitCombo") == true)
         {

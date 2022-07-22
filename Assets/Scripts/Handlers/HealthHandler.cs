@@ -12,6 +12,9 @@ public class HealthHandler : MonoBehaviour
     [SerializeField] private Transform _healthPanel;
     [SerializeField] private GameObject _heartPrefab;
 
+    [Space(10)]
+    [SerializeField] private GameOverPanel _gameOverPanel;
+
     private List<GameObject> _health = new List<GameObject>();
 
     private void Start()
@@ -74,11 +77,17 @@ public class HealthHandler : MonoBehaviour
         CheckZeroHealth();
     }
 
+    public void SetMaxHealth()
+    {
+        AddHealth(_maxHealth);
+    }
+
     private void CheckZeroHealth()
     {
         if (_currentHealth == 0)
         {
-            Debug.Log("GameOver");
+            _gameOverPanel.PauseTheGame();
+            _gameOverPanel.ShowGameOverPanel();
         }
     }
 }
