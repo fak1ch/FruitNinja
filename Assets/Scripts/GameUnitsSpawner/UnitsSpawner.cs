@@ -19,8 +19,9 @@ public class UnitsSpawner : MonoBehaviour
     [SerializeField] private SpawnerData _spawnerData;
 
     private Utils _utils;
-
     private float _timeBetweenWaves;
+
+    public bool PauseSpawnUnits { get; set; }
 
     private void Start()
     {
@@ -30,14 +31,17 @@ public class UnitsSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_timeBetweenWaves <= 0)
+        if (PauseSpawnUnits == false)
         {
-            SpawnWave();
-            _timeBetweenWaves = _spawnerData.MaxTimeBetweenWaves;
-        }
-        else
-        {
-            _timeBetweenWaves -= Time.deltaTime;
+            if (_timeBetweenWaves <= 0)
+            {
+                SpawnWave();
+                _timeBetweenWaves = _spawnerData.MaxTimeBetweenWaves;
+            }
+            else
+            {
+                _timeBetweenWaves -= Time.deltaTime;
+            }
         }
     }
 

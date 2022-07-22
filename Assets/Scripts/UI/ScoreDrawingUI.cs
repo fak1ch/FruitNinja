@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class ScoreDrawingUI : MonoBehaviour
 {
+    [Space(10)]
     [SerializeField] private GameObject _scorePanel;
     [SerializeField] private TextMeshProUGUI _currentScoreText;
     [SerializeField] private TextMeshProUGUI _bestScoreText;
     [SerializeField] private float _textLerpSpeed = 1f;
+
+    private string _bestScoreKey;
 
     private int _score;
     private int _bestScore;
@@ -18,9 +21,13 @@ public class ScoreDrawingUI : MonoBehaviour
     private bool _isOpenScore = false;
     private bool _isOpenBestScore = false;
 
+    public int GetCurrentScore => _score;
+    public int GetBestScore => _bestScore;
+
     private void Start()
     {
-        _bestScore = PlayerPrefs.GetInt("BestScore", 0);
+        _bestScoreKey = SaveKeys.BestScoreKey;
+        _bestScore = PlayerPrefs.GetInt(_bestScoreKey, 0);
         _bestScoreText.text = $"{_bestScore}";
     }
 
@@ -46,7 +53,7 @@ public class ScoreDrawingUI : MonoBehaviour
             if (_score >= _bestScore)
             {
                 _isOpenBestScore = true;
-                PlayerPrefs.SetInt("BestScore", _needScore);
+                PlayerPrefs.SetInt(_bestScoreKey, _needScore);
             }
         }
     }
@@ -60,6 +67,13 @@ public class ScoreDrawingUI : MonoBehaviour
         {
             _score -= score;
         }
+    }
+
+    public void RestartCurrentScore()
+    {
+        _score = 0;
+        _needScore = 0;
+        RefreshScores();
     }
 
     private void RefreshScores()
