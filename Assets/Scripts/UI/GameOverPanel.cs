@@ -11,9 +11,9 @@ public class GameOverPanel : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
-    [SerializeField] private UnitsSpawner _unitSpawner;
+    [SerializeField] private ComplexSpawnHandler _unitSpawner;
     [SerializeField] private HealthHandler _healthHandler;
-    [SerializeField] private LoadingHandler _loadingHandler;
+    [SerializeField] private LoadingHandler _loadingHandler; 
 
     public void PauseTheGame()
     {
