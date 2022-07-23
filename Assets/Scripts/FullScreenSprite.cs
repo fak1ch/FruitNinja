@@ -6,16 +6,11 @@ using UnityEngine.UI;
 public class FullScreenSprite : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Image _image;
     [SerializeField] private Camera _mainCamera;
 
     private void Awake()
     {
-        if (_spriteRenderer != null)
-            SetSpriteFullScreen(_spriteRenderer.sprite);
-
-        if (_image != null)
-            SetSpriteFullScreen(_image.sprite);
+        SetSpriteFullScreen(_spriteRenderer.sprite);
     }
 
     public void SetSpriteFullScreen(Sprite sprite)

@@ -13,6 +13,7 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
     [SerializeField] private UnitsSpawner _unitSpawner;
     [SerializeField] private HealthHandler _healthHandler;
+    [SerializeField] private LoadingHandler _loadingHandler;
 
     public void PauseTheGame()
     {
@@ -41,6 +42,6 @@ public class GameOverPanel : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        _loadingHandler.LoadScene("MainMenu");
     }
 }

@@ -25,18 +25,6 @@ public class HealthHandler : MonoBehaviour
         AddHealth(_currentHealth);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            AddHealth(1);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            RemoveHealth(1);
-        }
-    }
-
     public void AddHealth(int healthCount)
     {
         if (healthCount <= 0)

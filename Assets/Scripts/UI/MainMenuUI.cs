@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _bestScoreText;
+    [SerializeField] private LoadingHandler _loadingHandler;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        _loadingHandler.LoadScene("SampleScene");
     }
 
     public void ExitGame()
