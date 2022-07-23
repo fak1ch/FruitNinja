@@ -5,18 +5,26 @@ using UnityEngine;
 public class ComplexSpawnHandler : MonoBehaviour
 {
     [SerializeField] private SpawnerData[] _spawnersData;
-    [SerializeField] private UnitsContainer _unitsContainer;
+    [SerializeField] private UnitsWaveData[] _wavesData;
+    [SerializeField] private float _minusTimeIfContainerEmpty = 0.5f;
 
-    [SerializeField] private UnitsWaveData _waveData;
+    [Space(10)]
+    [SerializeField] private UnitsContainer _unitsContainer;
+    [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
 
     private Utils _utils;
-    private float _timeBetweenWaves;
+    [SerializeField] private float _timeBetweenWaves;
+    private UnitsWaveData _currentWaveData;
+    private int _currentWaveDataIndex;
+    private bool _isReduced = false;
 
     public bool PauseSpawnUnits { get; set; }
 
     private void Start()
     {
-        _timeBetweenWaves = _waveData.MaxTimeBetweenWaves;
+        _currentWaveData = _wavesData[0];
+        _currentWaveDataIndex = 0;
+        _timeBetweenWaves = _currentWaveData.TimeBetweenWaves;
         _utils = new Utils();
     }
 
@@ -27,30 +35,33 @@ public class ComplexSpawnHandler : MonoBehaviour
             if (_timeBetweenWaves <= 0)
             {
                 SpawnWave();
-                _timeBetweenWaves = _waveData.MaxTimeBetweenWaves;
+                _timeBetweenWaves = _currentWaveData.TimeBetweenWaves;
             }
             else
             {
                 _timeBetweenWaves -= Time.deltaTime;
             }
         }
+
+        CheckingGameComplication();
+        CheckingCurrentUnits();
     }
 
     private void SpawnWave()
     {
-        int gameUnitsMaxCount = Random.Range(_waveData.MinGameUnitsInWave, _waveData.MaxGameUnitsInWave + 1);
+        int gameUnitsMaxCount = Random.Range(_currentWaveData.MinGameUnitsInWave, _currentWaveData.MaxGameUnitsInWave + 1);
 
         List<UnitCanCut> gameUnitPrefabs = new List<UnitCanCut>(gameUnitsMaxCount);
 
-        int unitsCount = Random.Range(_waveData.MinFruitsInWave, gameUnitsMaxCount);
+        int fruitsCount = Random.Range(_currentWaveData.MinFruitsInWave, gameUnitsMaxCount + 1);
 
-        for (int i = 0; i < unitsCount; i++)
+        for (int i = 0; i < fruitsCount; i++)
         {
             gameUnitPrefabs.Add(_unitsContainer.GetRandomFruitPrefab());
         }
 
-        AddUnitToList(gameUnitPrefabs, _waveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
-        AddUnitToList(gameUnitPrefabs, _waveData.BonusSpawnProcent, _unitsContainer.GetRandomBonusPrefab());
+        AddUnitToList(gameUnitPrefabs, _currentWaveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
+        AddUnitToList(gameUnitPrefabs, _currentWaveData.BonusSpawnProcent, _unitsContainer.GetRandomBonusPrefab());
 
         StartCoroutine(SpawnGameUnits(gameUnitPrefabs));
     }
@@ -72,7 +83,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
     private IEnumerator SpawnGameUnits(List<UnitCanCut> gameUnits)
     {
-        float timeBetweenUnitSpawns = Random.Range(_waveData.MinTimeBetweenUnitSpawns, _waveData.MaxTimeBetweenUnitSpawns);
+        float timeBetweenUnitSpawns = Random.Range(_currentWaveData.MinTimeBetweenUnitSpawns, _currentWaveData.MaxTimeBetweenUnitSpawns);
 
         for (int i = 0; i < gameUnits.Count; i++)
         {
@@ -83,6 +94,42 @@ public class ComplexSpawnHandler : MonoBehaviour
             _unitsContainer.AddUnit(newUnit);
 
             yield return new WaitForSeconds(timeBetweenUnitSpawns);
+        }
+    }
+
+    private void CheckingGameComplication()
+    {
+        int currentScore = _scoreDrawingUI.GetCurrentScore;
+        int i = _currentWaveDataIndex + 1;
+
+        if (i < _wavesData.Length)
+        {
+            while(i < _wavesData.Length)
+            {
+                if (currentScore >= _wavesData[_currentWaveDataIndex].WorkLessScore
+                    && currentScore <= _wavesData[i].WorkLessScore)
+                {
+                    _currentWaveData = _wavesData[i];
+                    _currentWaveDataIndex = i;
+                }
+
+                i++;
+            }
+        }
+    }
+
+    private void CheckingCurrentUnits()
+    {
+        int unitsCount = _unitsContainer.GetCurrentUnitsCount;
+
+        if (unitsCount == 0 && _isReduced == false)
+        {
+            _isReduced = true;
+            _timeBetweenWaves -= _minusTimeIfContainerEmpty;
+        }
+        if (unitsCount > 0 && _isReduced == true)
+        {
+            _isReduced = false;
         }
     }
 

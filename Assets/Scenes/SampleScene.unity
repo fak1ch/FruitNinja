@@ -3878,16 +3878,73 @@ MonoBehaviour:
     SpawnProcent: 25
   - UnitsSpawner: {fileID: 1903304925}
     SpawnProcent: 25
-  _unitsContainer: {fileID: 1303467492}
-  _waveData:
-    MaxTimeBetweenUnitSpawns: 0.4
-    MinTimeBetweenUnitSpawns: 0.1
-    MaxTimeBetweenWaves: 3
+  _wavesData:
+  - MaxTimeBetweenUnitSpawns: 0.6
+    MinTimeBetweenUnitSpawns: 0.4
+    TimeBetweenWaves: 3
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 3
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 25
+  - MaxTimeBetweenUnitSpawns: 0.4
+    MinTimeBetweenUnitSpawns: 0.3
+    TimeBetweenWaves: 2.5
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 4
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 50
+  - MaxTimeBetweenUnitSpawns: 0.35
+    MinTimeBetweenUnitSpawns: 0.2
+    TimeBetweenWaves: 2.25
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 5
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 150
+  - MaxTimeBetweenUnitSpawns: 0.3
+    MinTimeBetweenUnitSpawns: 0.2
+    TimeBetweenWaves: 2
     MinGameUnitsInWave: 1
     MaxGameUnitsInWave: 6
     MinFruitsInWave: 0
     BombSpawnProcent: 20
     BonusSpawnProcent: 10
+    WorkLessScore: 300
+  - MaxTimeBetweenUnitSpawns: 0.25
+    MinTimeBetweenUnitSpawns: 0.2
+    TimeBetweenWaves: 1.7
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 8
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 500
+  - MaxTimeBetweenUnitSpawns: 0.15
+    MinTimeBetweenUnitSpawns: 0.05
+    TimeBetweenWaves: 1
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 10
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 1000
+  _unitsContainer: {fileID: 1303467492}
+  _scoreDrawingUI: {fileID: 951800332}
+  _currentWaveData:
+    MaxTimeBetweenUnitSpawns: 0.2
+    MinTimeBetweenUnitSpawns: 0.05
+    TimeBetweenWaves: 3
+    MinGameUnitsInWave: 1
+    MaxGameUnitsInWave: 6
+    MinFruitsInWave: 0
+    BombSpawnProcent: 20
+    BonusSpawnProcent: 10
+    WorkLessScore: 0
 --- !u!4 &2068215289
 Transform:
   m_ObjectHideFlags: 0
