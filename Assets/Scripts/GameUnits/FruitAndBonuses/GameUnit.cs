@@ -22,7 +22,7 @@ public class GameUnit : MonoBehaviour
 
     public PhysicalMovement GetPhysicalMovement => _physicalMovement;
 
-    private void Start()
+    protected virtual void Start()
     {
         _utils = new Utils();
 

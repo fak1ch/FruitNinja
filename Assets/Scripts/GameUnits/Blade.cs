@@ -1,4 +1,4 @@
-using System;
+    using System;
 using UnityEngine;
 
 public class Blade : MonoBehaviour
@@ -12,7 +12,7 @@ public class Blade : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private TrailRenderer _trailRenderer;
-    [SerializeField] private UnitsContainer _fruitsContainer;
+    [SerializeField] private UnitsContainer _unitsContainer;
 
     private Vector3 _lastFrameMousePosition;
     private Vector3 _currentFrameMousePosition;
@@ -88,7 +88,7 @@ public class Blade : MonoBehaviour
         float x = _currentFrameMousePosition.x;
         float y = _currentFrameMousePosition.y;
 
-        var gameUnits = _fruitsContainer.GetUnitsLocatedInCircle(x, y, _bladeRadius);
+        var gameUnits = _unitsContainer.GetUnitsLocatedInCircle(x, y, _bladeRadius);
 
         if (gameUnits.Count == 0)
             return;
@@ -100,7 +100,7 @@ public class Blade : MonoBehaviour
 
         for(int i = 0; i < gameUnits.Count; i++)
         {
-            _fruitsContainer.RemoveUnit(gameUnits[i]);
+            _unitsContainer.RemoveUnit(gameUnits[i]);
             gameUnits[i].CutThisGameUnit(mousePosition);
 
             if (gameUnits[i].gameObject.TryGetComponent(out Fruit fruit) == true)
@@ -109,7 +109,7 @@ public class Blade : MonoBehaviour
                 totalScore += fruit.GetScorePrice();
             }
 
-            newBladeColorEffect = gameUnits[i].GetBladeColorCut;
+            newBladeColorEffect = gameUnits[i].BladeColorCut;
         }
 
         _trailRenderer.endColor = newBladeColorEffect;

@@ -7,13 +7,14 @@ public class ComplexSpawnHandler : MonoBehaviour
     [SerializeField] private SpawnerData[] _spawnersData;
     [SerializeField] private UnitsWaveData[] _wavesData;
     [SerializeField] private float _minusTimeIfContainerEmpty = 0.5f;
+    [SerializeField] private int _chanceBetweenFruitAndBonus = 50;
 
     [Space(10)]
     [SerializeField] private UnitsContainer _unitsContainer;
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
 
     private Utils _utils;
-    [SerializeField] private float _timeBetweenWaves;
+    private float _timeBetweenWaves;
     private UnitsWaveData _currentWaveData;
     private int _currentWaveDataIndex;
     private bool _isReduced = false;
@@ -51,19 +52,14 @@ public class ComplexSpawnHandler : MonoBehaviour
     {
         int gameUnitsMaxCount = Random.Range(_currentWaveData.MinGameUnitsInWave, _currentWaveData.MaxGameUnitsInWave + 1);
 
-        List<UnitCanCut> gameUnitPrefabs = new List<UnitCanCut>(gameUnitsMaxCount);
+        List<UnitCanCut> bonusPrefabs = new List<UnitCanCut>(gameUnitsMaxCount);
 
         int fruitsCount = Random.Range(_currentWaveData.MinFruitsInWave, gameUnitsMaxCount + 1);
 
-        for (int i = 0; i < fruitsCount; i++)
-        {
-            gameUnitPrefabs.Add(_unitsContainer.GetRandomFruitPrefab());
-        }
+        AddUnitToList(bonusPrefabs, _currentWaveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
+        AddUnitToList(bonusPrefabs, _currentWaveData.BonusSpawnProcent, _unitsContainer.GetRandomBonusPrefab());
 
-        AddUnitToList(gameUnitPrefabs, _currentWaveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
-        AddUnitToList(gameUnitPrefabs, _currentWaveData.BonusSpawnProcent, _unitsContainer.GetRandomBonusPrefab());
-
-        StartCoroutine(SpawnGameUnits(gameUnitPrefabs));
+        StartCoroutine(SpawnGameUnits(bonusPrefabs, gameUnitsMaxCount - fruitsCount));
     }
 
     private void AddUnitToList(List<UnitCanCut> units, int procent, UnitCanCut unitPrefab)
@@ -81,17 +77,36 @@ public class ComplexSpawnHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnGameUnits(List<UnitCanCut> gameUnits)
+    private IEnumerator SpawnGameUnits(List<UnitCanCut> bonusPrefabs, int fruitCount)
     {
         float timeBetweenUnitSpawns = Random.Range(_currentWaveData.MinTimeBetweenUnitSpawns, _currentWaveData.MaxTimeBetweenUnitSpawns);
 
-        for (int i = 0; i < gameUnits.Count; i++)
+        while (true)
         {
-            var prefab = gameUnits[i];
+            bool spawnBonus = _utils.CheckRandomless(_chanceBetweenFruitAndBonus);
             var spawner = GetRandomUnitSpawner();
+            UnitCanCut prefab = null;
 
-            var newUnit = spawner.SpawnUnit(prefab);
-            _unitsContainer.AddUnit(newUnit);
+            if (spawnBonus == true && bonusPrefabs.Count > 0)
+            {
+                int index = Random.Range(0, bonusPrefabs.Count);
+                prefab = bonusPrefabs[index];
+                bonusPrefabs.Remove(prefab);
+            }
+            else if (fruitCount > 0)
+            {
+                prefab = _unitsContainer.GetRandomFruitPrefab();
+                fruitCount--;
+            }
+
+            if (prefab != null)
+            {
+                var newUnit = spawner.SpawnUnit(prefab);
+                _unitsContainer.AddUnit(newUnit);
+            }
+
+            if (bonusPrefabs.Count == 0 && fruitCount == 0)
+                break;
 
             yield return new WaitForSeconds(timeBetweenUnitSpawns);
         }
@@ -147,5 +162,10 @@ public class ComplexSpawnHandler : MonoBehaviour
         }
 
         return unitSpawner;
+    }
+
+    public void SetCurrentWaveDataAsDefault()
+    {
+        _currentWaveData = _wavesData[0];
     }
 }
