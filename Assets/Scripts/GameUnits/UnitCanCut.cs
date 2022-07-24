@@ -39,4 +39,10 @@ public class UnitCanCut : GameUnit
 
         Destroy(gameObject);
     }
+
+    public void SetFruitData(FruitData fruitData)
+    {
+        _bladeColorCut = fruitData.BladeEffect;
+        _spriteRenderer.sprite = fruitData.FruitSprite;
+    }
 }

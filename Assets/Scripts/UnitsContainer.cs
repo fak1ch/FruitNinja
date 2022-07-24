@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UnitsContainer : MonoBehaviour
 {
-    [SerializeField] private UnitCanCut[] _fruitPrefabs;
+    [SerializeField] private FruitData[] _fruitsData;
+    [SerializeField] private UnitCanCut _fruitPrefab;
     [SerializeField] private UnitCanCut[] _bonusPrefabs;
     [SerializeField] private UnitCanCut _bombPrefab;
 
@@ -25,9 +26,11 @@ public class UnitsContainer : MonoBehaviour
 
     public UnitCanCut GetRandomFruitPrefab()
     {
-        UnitCanCut fruit = _fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)];
+        int index = Random.Range(0, _fruitsData.Length);
 
-        return fruit;
+        _fruitPrefab.SetFruitData(_fruitsData[index]);
+
+        return _fruitPrefab;
     }
 
     public UnitCanCut GetRandomBonusPrefab()

@@ -1682,11 +1682,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa9b82c5cab49149841392fd7accdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruitPrefabs:
-  - {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
+  _fruitsData:
+  - FruitSprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
+    BladeEffect: {r: 1, g: 0, b: 0, a: 1}
+    ParticleSystem: {r: 1, g: 0, b: 0, a: 1}
+    TraceAfterCut: {r: 1, g: 0, b: 0, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: 54f37729821a47a4e842005f08d61ddc, type: 3}
+    BladeEffect: {r: 0.29803923, g: 1, b: 0, a: 1}
+    ParticleSystem: {r: 0.29803923, g: 1, b: 0, a: 1}
+    TraceAfterCut: {r: 0.29803923, g: 1, b: 0, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: a3ea2c8d1249221478677b301eb325fa, type: 3}
+    BladeEffect: {r: 1, g: 0.7604933, b: 0, a: 1}
+    ParticleSystem: {r: 1, g: 0.7607843, b: 0, a: 1}
+    TraceAfterCut: {r: 1, g: 0.7607843, b: 0, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: a563971405bda52488bfb8d7c1916e63, type: 3}
+    BladeEffect: {r: 0.78751564, g: 0, b: 1, a: 1}
+    ParticleSystem: {r: 0.7882353, g: 0, b: 1, a: 1}
+    TraceAfterCut: {r: 0.7882353, g: 0, b: 1, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: 0ee888b06f6a9b64794fdef9434551d0, type: 3}
+    BladeEffect: {r: 1, g: 0.46949857, b: 0, a: 1}
+    ParticleSystem: {r: 1, g: 0.47058824, b: 0, a: 1}
+    TraceAfterCut: {r: 1, g: 0.47058824, b: 0, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: 71629d2c895886247825e9c272377c42, type: 3}
+    BladeEffect: {r: 1, g: 1, b: 0, a: 1}
+    ParticleSystem: {r: 1, g: 1, b: 0, a: 1}
+    TraceAfterCut: {r: 1, g: 1, b: 0, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
+    BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
+    ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
+    TraceAfterCut: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
+  - FruitSprite: {fileID: 21300000, guid: 9c86f086f28437f48aeab89da1bd7ec3, type: 3}
+    BladeEffect: {r: 1, g: 0.61466914, b: 0.3160377, a: 1}
+    ParticleSystem: {r: 1, g: 0.6156863, b: 0.31764707, a: 1}
+    TraceAfterCut: {r: 1, g: 0.6156863, b: 0.31764707, a: 1}
+  _fruitPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
   _bonusPrefabs:
-  - {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
-  _bombPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
+  - {fileID: 373880143491167395, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
+  - {fileID: 279477269014366694, guid: 190caf2743ca751459b0f8df4ceecf19, type: 3}
+  - {fileID: 1130858029383175119, guid: 52ecebe7b5951a64daeab955646c7d61, type: 3}
+  - {fileID: 2651107082658918355, guid: e8aba7bbe24d6a64994d35eaad587fe1, type: 3}
+  _bombPrefab: {fileID: 2814677152691374388, guid: c43c2a1ce18133e448b24444929ad602, type: 3}
   _currentUnits: []
 --- !u!4 &1303467493
 Transform:
@@ -2863,7 +2898,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 0.5686275}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3933,18 +3968,10 @@ MonoBehaviour:
     BombSpawnProcent: 20
     BonusSpawnProcent: 10
     WorkLessScore: 1000
+  _minusTimeIfContainerEmpty: 0.5
   _unitsContainer: {fileID: 1303467492}
   _scoreDrawingUI: {fileID: 951800332}
-  _currentWaveData:
-    MaxTimeBetweenUnitSpawns: 0.2
-    MinTimeBetweenUnitSpawns: 0.05
-    TimeBetweenWaves: 3
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 6
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 0
+  _timeBetweenWaves: 0
 --- !u!4 &2068215289
 Transform:
   m_ObjectHideFlags: 0
