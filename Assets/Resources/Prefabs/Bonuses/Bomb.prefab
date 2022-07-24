@@ -176,6 +176,8 @@ MonoBehaviour:
   _minCutLineProcent: 15
   _maxCutLineProcent: 85
   _bladeColorCut: {r: 0, g: 0, b: 0, a: 0}
+  _bombRadius: 5
+  _explosivePower: 1
 --- !u!1001 &1203046136066040238
 PrefabInstance:
   m_ObjectHideFlags: 0

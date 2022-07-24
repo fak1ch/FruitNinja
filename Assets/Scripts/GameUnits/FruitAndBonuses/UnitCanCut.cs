@@ -12,11 +12,13 @@ public class UnitCanCut : GameUnit
     [Space(10)]
     [SerializeField] private Color _bladeColorCut;
 
-    public Color GetBladeColorCut => _bladeColorCut;
+    protected MainObjects _mainObjects;
+    public Color BladeColorCut => _bladeColorCut;
 
     protected virtual void CutResult()
     {
 
+        Destroy(gameObject);
     }
 
     public virtual void CutThisGameUnit(Vector2 mousePosition)
@@ -36,13 +38,16 @@ public class UnitCanCut : GameUnit
         _halfPrefabsPool[1].SpawnHalfUnit(sprites[1], velocity, newShadowPosition, scale, false);
 
         CutResult();
-
-        Destroy(gameObject);
     }
 
     public void SetFruitData(FruitData fruitData)
     {
         _bladeColorCut = fruitData.BladeEffect;
         _spriteRenderer.sprite = fruitData.FruitSprite;
+    }
+
+    public void SetMainObjects(MainObjects mainObjects)
+    {
+        _mainObjects = mainObjects;
     }
 }

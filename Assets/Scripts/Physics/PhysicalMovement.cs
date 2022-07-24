@@ -38,6 +38,11 @@ public class PhysicalMovement : MonoBehaviour
         _velocity = velocityVector;
     }
 
+    public void AddToVelocityVector(Vector2 velocityVector)
+    {
+        _velocity += velocityVector;
+    }
+
     private float ApplyGravity(float number)
     {
         if (_data.AirDrug != 0)

@@ -81,7 +81,7 @@ MonoBehaviour:
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
   _bladeColorCut: {r: 0.7830189, g: 0, b: 0, a: 0}
-  _healCount: 1
+  _addHealCount: 1
 --- !u!1 &4296986876754106609
 GameObject:
   m_ObjectHideFlags: 0

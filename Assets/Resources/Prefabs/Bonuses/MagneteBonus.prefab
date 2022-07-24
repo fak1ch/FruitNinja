@@ -180,6 +180,10 @@ MonoBehaviour:
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
   _bladeColorCut: {r: 0.05724907, g: 0, b: 1, a: 0}
+  _magniteRadius: 5
+  _magnitePower: 0.2
+  _timeUntilDestroy: 15
+  _magniteDuration: 1
 --- !u!1001 &1214551839904468767
 PrefabInstance:
   m_ObjectHideFlags: 0

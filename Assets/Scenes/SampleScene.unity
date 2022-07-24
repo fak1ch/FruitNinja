@@ -186,6 +186,9 @@ MonoBehaviour:
   _secondPoint: {fileID: 1398517540}
   _pointsFlyTo:
   - {fileID: 630218100}
+  _mainObjects:
+    UnitsContainer: {fileID: 1303467492}
+    HealthHandler: {fileID: 1934624102}
 --- !u!224 &59949064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -203,10 +206,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.106933594, y: -602.00024}
-  m_SizeDelta: {x: 0.21300125, y: -1212.45}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 52}
+  m_SizeDelta: {x: 0, y: 81.55005}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &142334405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,6 +2752,9 @@ MonoBehaviour:
   _secondPoint: {fileID: 1942689387}
   _pointsFlyTo:
   - {fileID: 630218100}
+  _mainObjects:
+    UnitsContainer: {fileID: 1303467492}
+    HealthHandler: {fileID: 1934624102}
 --- !u!1 &1671175397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,7 +2804,7 @@ MonoBehaviour:
   _speedChangeBladeColor: 1
   _bladeCanCut: 0
   _trailRenderer: {fileID: 1671175401}
-  _fruitsContainer: {fileID: 1303467492}
+  _unitsContainer: {fileID: 1303467492}
 --- !u!96 &1671175401
 TrailRenderer:
   serializedVersion: 2
@@ -3605,6 +3611,9 @@ MonoBehaviour:
   _secondPoint: {fileID: 14743542}
   _pointsFlyTo:
   - {fileID: 630218100}
+  _mainObjects:
+    UnitsContainer: {fileID: 1303467492}
+    HealthHandler: {fileID: 1934624102}
 --- !u!1 &1934624100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,9 +3978,9 @@ MonoBehaviour:
     BonusSpawnProcent: 10
     WorkLessScore: 1000
   _minusTimeIfContainerEmpty: 0.5
+  _chanceBetweenFruitAndBonus: 50
   _unitsContainer: {fileID: 1303467492}
   _scoreDrawingUI: {fileID: 951800332}
-  _timeBetweenWaves: 0
 --- !u!4 &2068215289
 Transform:
   m_ObjectHideFlags: 0
