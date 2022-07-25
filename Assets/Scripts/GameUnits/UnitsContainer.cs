@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitsContainer : MonoBehaviour
 {
-    [SerializeField] private FruitData[] _fruitsData;
+    [SerializeField] private UnitData[] _fruitsData;
     [SerializeField] private UnitCanCut _fruitPrefab;
     [SerializeField] private UnitCanCut[] _bonusPrefabs;
     [SerializeField] private UnitCanCut _bombPrefab;
