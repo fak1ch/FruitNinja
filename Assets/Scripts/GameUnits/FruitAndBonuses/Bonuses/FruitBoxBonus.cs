@@ -9,13 +9,13 @@ public class FruitBoxBonus : UnitCanCut
     [SerializeField] private int _maxFruitsCount = 5;
     [SerializeField] private Sprite _emptyBoxSprite;
 
-    public override void CutThisGameUnit(Vector2 mousePosition)
+    protected override void CutResult()
     {
         _spriteRenderer.sprite = _emptyBoxSprite;
 
         int count = Random.Range(_minFruitsCount, _maxFruitsCount + 1);
 
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             Vector2 position = transform.position;
             float offsetX = Random.Range(-_offsetX, _offsetX);
@@ -26,5 +26,10 @@ public class FruitBoxBonus : UnitCanCut
             fruit.SetMainObjects(_mainObjects);
             _mainObjects.UnitsContainer.AddUnit(fruit);
         }
+    }
+
+    protected override void CutSprite(Vector2 mousePosition)
+    {
+
     }
 }

@@ -10,7 +10,12 @@ public class MagniteBonus : UnitCanCut
 
     private bool _magniteIsWork = false;
 
-    public override void CutThisGameUnit(Vector2 mousePosition)
+    protected override void CutSprite(Vector2 mousePosition)
+    {
+
+    }
+
+    protected override void CutResult()
     {
         _magniteIsWork = true;
         StartCoroutine(MagniteWork());

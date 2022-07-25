@@ -13,8 +13,14 @@ public class UnitCanCut : GameUnit
     [SerializeField] private Color _bladeColorCut;
     [SerializeField] private float _timeUntilDestroy;
 
+    [Space(10)]
+    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private Effect[] _effects;
+
     protected MainObjects _mainObjects;
+    public UnitData _currentUnitData;
     public Color BladeColorCut => _bladeColorCut;
+
 
     private void Awake()
     {
@@ -22,6 +28,33 @@ public class UnitCanCut : GameUnit
     }
 
     public virtual void CutThisGameUnit(Vector2 mousePosition)
+    {
+        CutSprite(mousePosition);
+        CreateEffects();
+        CutResult();
+    }
+
+    private void CreateEffects()
+    {
+        if (_particleSystem != null)
+        {
+            var particles = Instantiate(_particleSystem, transform.position, Quaternion.identity);
+            var particlesMain = particles.main;
+            particlesMain.startColor = _currentUnitData.ParticleSystem;
+        }
+
+        if (_effects.Length > 0)
+        {
+            for(int i = 0; i < _effects.Length; i++)
+            {
+                var effect = Instantiate(_effects[i], transform.position, Quaternion.identity);
+                effect.transform.position = transform.position;
+                effect.Color = _currentUnitData.Effects;
+            }
+        }
+    }
+
+    protected virtual void CutSprite(Vector2 mousePosition)
     {
         int cutLineProcent = Random.Range(_minCutLineProcent, _maxCutLineProcent);
 
@@ -34,8 +67,6 @@ public class UnitCanCut : GameUnit
 
         _halfPrefabsPool[0].SpawnHalfUnit(sprites[0], velocity, newShadowPosition, scale, true);
         _halfPrefabsPool[1].SpawnHalfUnit(sprites[1], velocity, newShadowPosition, scale, false);
-
-        CutResult();
     }
 
     protected virtual void CutResult()
@@ -43,13 +74,15 @@ public class UnitCanCut : GameUnit
         StartCoroutine(DestroyGameObject(0));
     }
 
-    public void SetFruitData(FruitData fruitData)
+    public void SetFruitData(UnitData fruitData)
     {
-        _bladeColorCut = fruitData.BladeEffect;
-        _spriteRenderer.sprite = fruitData.FruitSprite;
-        _startScale = fruitData.StartScale;
-        _endScale = fruitData.EndScale;
-        _scaleSpeed = fruitData.ScaleSpeed;
+        _currentUnitData = fruitData;
+
+        _bladeColorCut = _currentUnitData.BladeEffect;
+        _spriteRenderer.sprite = _currentUnitData.FruitSprite;
+        _startScale = _currentUnitData.StartScale;
+        _endScale = _currentUnitData.EndScale;
+        _scaleSpeed = _currentUnitData.ScaleSpeed;
     }
 
     public void SetMainObjects(MainObjects mainObjects)
