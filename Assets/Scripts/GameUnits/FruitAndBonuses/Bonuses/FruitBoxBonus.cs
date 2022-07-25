@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class FruitBoxBonus : UnitCanCut
 {
-    [SerializeField] private float _timeUntilDestroy = 10f;
     [SerializeField] private float _offsetX;  
     [SerializeField] private int _minFruitsCount = 3;
     [SerializeField] private int _maxFruitsCount = 5;
     [SerializeField] private Sprite _emptyBoxSprite;
-
-    private void Awake()
-    {
-        StartCoroutine(DestroyBonus());
-    }
 
     public override void CutThisGameUnit(Vector2 mousePosition)
     {
@@ -29,14 +23,8 @@ public class FruitBoxBonus : UnitCanCut
 
             var prefab = _mainObjects.UnitsContainer.GetRandomFruitPrefab();
             var fruit = Instantiate(prefab, position, Quaternion.identity);
+            fruit.SetMainObjects(_mainObjects);
             _mainObjects.UnitsContainer.AddUnit(fruit);
         }
-    }
-
-    private IEnumerator DestroyBonus()
-    {
-        yield return new WaitForSeconds(_timeUntilDestroy);
-        _mainObjects.UnitsContainer.RemoveUnit(this);
-        Destroy(gameObject);
     }
 }

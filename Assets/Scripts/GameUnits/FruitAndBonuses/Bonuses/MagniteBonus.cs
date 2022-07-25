@@ -6,15 +6,9 @@ public class MagniteBonus : UnitCanCut
 {
     [SerializeField] private float _magniteRadius = 5f;
     [SerializeField] private float _magnitePower = 0.2f;
-    [SerializeField] private float _timeUntilDestroy = 15f;
     [SerializeField] private float _magniteDuration = 3f;
 
     private bool _magniteIsWork = false;
-
-    private void Awake()
-    {
-        StartCoroutine(DestroyUnit(_timeUntilDestroy));
-    }
 
     public override void CutThisGameUnit(Vector2 mousePosition)
     {
@@ -39,7 +33,7 @@ public class MagniteBonus : UnitCanCut
                 Vector2 moveVector = transform.position - units[i].transform.position;
                 moveVector.Normalize();
                 moveVector *= _magnitePower * distance;
-                units[i].GetPhysicalMovement.SetVelocityVector(moveVector);
+                units[i].PhysicalMovement.SetVelocityVector(moveVector);
             }
         }
     }
@@ -48,12 +42,5 @@ public class MagniteBonus : UnitCanCut
     {
         yield return new WaitForSeconds(_magniteDuration);
         _magniteIsWork = false;
-    }
-
-    private IEnumerator DestroyUnit(float timeUntilDestroy)
-    {
-        yield return new WaitForSeconds(timeUntilDestroy);
-        _mainObjects.UnitsContainer.RemoveUnit(this);
-        Destroy(gameObject);
     }
 }

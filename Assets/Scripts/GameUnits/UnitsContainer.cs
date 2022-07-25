@@ -11,8 +11,8 @@ public class UnitsContainer : MonoBehaviour
 
     [SerializeField] private List<UnitCanCut> _currentUnits = new List<UnitCanCut>();
 
-    public List<UnitCanCut> GetCurrentUnits => _currentUnits;
-    public int GetCurrentUnitsCount => _currentUnits.Count;
+    public List<UnitCanCut> CurrentUnits => _currentUnits;
+    public int CurrentUnitsCount => _currentUnits.Count;
 
     public void AddUnit(UnitCanCut gameUnit)
     {

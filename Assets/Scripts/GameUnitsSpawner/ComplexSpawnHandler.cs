@@ -13,7 +13,6 @@ public class ComplexSpawnHandler : MonoBehaviour
     [SerializeField] private UnitsContainer _unitsContainer;
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
 
-    private Utils _utils;
     private float _timeBetweenWaves;
     private UnitsWaveData _currentWaveData;
     private int _currentWaveDataIndex;
@@ -26,7 +25,6 @@ public class ComplexSpawnHandler : MonoBehaviour
         _currentWaveData = _wavesData[0];
         _currentWaveDataIndex = 0;
         _timeBetweenWaves = _currentWaveData.TimeBetweenWaves;
-        _utils = new Utils();
     }
 
     private void Update()
@@ -64,7 +62,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
     private void AddUnitToList(List<UnitCanCut> units, int procent, UnitCanCut unitPrefab)
     {
-        if (_utils.CheckRandomless(procent) == true)
+        if (Utils.CheckRandomless(procent) == true)
         {
             if (units.Count < units.Capacity)
             {
@@ -83,7 +81,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
         while (true)
         {
-            bool spawnBonus = _utils.CheckRandomless(_chanceBetweenFruitAndBonus);
+            bool spawnBonus = Utils.CheckRandomless(_chanceBetweenFruitAndBonus);
             var spawner = GetRandomUnitSpawner();
             UnitCanCut prefab = null;
 
@@ -114,7 +112,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
     private void CheckingGameComplication()
     {
-        int currentScore = _scoreDrawingUI.GetCurrentScore;
+        int currentScore = _scoreDrawingUI.CurrentScore;
         int i = _currentWaveDataIndex + 1;
 
         if (i < _wavesData.Length)
@@ -135,7 +133,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
     private void CheckingCurrentUnits()
     {
-        int unitsCount = _unitsContainer.GetCurrentUnitsCount;
+        int unitsCount = _unitsContainer.CurrentUnitsCount;
 
         if (unitsCount == 0 && _isReduced == false)
         {
@@ -154,7 +152,7 @@ public class ComplexSpawnHandler : MonoBehaviour
 
         for(int i = 0; i < _spawnersData.Length; i++)
         {
-            if (_utils.CheckRandomless(_spawnersData[i].SpawnProcent) == true)
+            if (Utils.CheckRandomless(_spawnersData[i].SpawnProcent) == true)
             {
                 unitSpawner = _spawnersData[i].UnitsSpawner;
                 break;

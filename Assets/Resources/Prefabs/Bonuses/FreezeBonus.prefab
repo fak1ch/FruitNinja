@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53c6455b0a2de44f9205bfb3503949c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shadowColor: {r: 0, g: 0, b: 0, a: 0}
+  _shadowColor: {r: 0, g: 0, b: 0, a: 0.4117647}
   _unitShadow: {fileID: 7468381995958846852}
   _physicalMovement: {fileID: 373880143491167397}
   _physicalRotation: {fileID: 3539866333504415586}
@@ -81,9 +81,9 @@ MonoBehaviour:
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
   _bladeColorCut: {r: 0, g: 0.97092485, b: 1, a: 0}
+  _timeUntilDestroy: 10
   _timeScale: 0.2
   _timeFreeze: 2
-  _timeUntilDestroy: 10
 --- !u!1 &3539866333504415644
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,12 +365,20 @@ PrefabInstance:
       value: Shadow
       objectReference: {fileID: 0}
     - target: {fileID: 6136407630389483965, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
-      propertyPath: m_Sprite
-      value: 
+      propertyPath: m_Size.x
+      value: 2.03
       objectReference: {fileID: 0}
     - target: {fileID: 6136407630389483965, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136407630389483965, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bda231814b109148871127c46be8593, type: 3}
+    - target: {fileID: 6136407630389483965, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136407630389483966, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: m_RootOrder

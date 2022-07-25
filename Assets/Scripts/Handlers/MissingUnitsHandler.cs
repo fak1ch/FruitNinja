@@ -45,7 +45,7 @@ public class MissingUnitsHandler : MonoBehaviour
 
     private void CheckMissingFruits()
     {
-        var fruits = _unitsContainer.GetCurrentUnits;
+        var fruits = _unitsContainer.CurrentUnits;
 
         for(int i = 0; i < fruits.Count; i++)
         {

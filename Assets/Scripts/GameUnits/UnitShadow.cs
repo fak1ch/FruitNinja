@@ -47,7 +47,7 @@ public class UnitShadow : MonoBehaviour
 
     public void ChangeShadowScale(Vector2 currentScale)
     {
-        float procent = GetProcent(_parentEndScale, _parentStartScale, currentScale.x);
+        float procent = Utils.GetProcent(_parentEndScale, _parentStartScale, currentScale.x);
         float newScale = (_parentEndScale - _minShadowScale) * (1 - procent);
         newScale += _minShadowScale;
 
@@ -56,20 +56,12 @@ public class UnitShadow : MonoBehaviour
 
     public void ChangeShadowPosition(Vector2 parentCurrentPosition, Vector2 currentScale)
     {
-        float procent = GetProcent(_parentEndScale, _parentStartScale, currentScale.x);
+        float procent = Utils.GetProcent(_parentEndScale, _parentStartScale, currentScale.x);
 
         Vector2 newPosition = parentCurrentPosition;
         _currentOffset = _shadowMaxOffset * procent;
         newPosition += _currentOffset;
 
         transform.position = newPosition;
-    }
-
-    private float GetProcent(float a, float b, float value)
-    {
-        if (b - a == 0)
-            return 0;
-
-        return (value - a) / (b - a);
     }
 }

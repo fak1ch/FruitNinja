@@ -24,8 +24,8 @@ public class GameOverPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        int currentScore = _scoreDrawingUI.GetCurrentScore;
-        int bestScore = _scoreDrawingUI.GetBestScore;
+        int currentScore = _scoreDrawingUI.CurrentScore;
+        int bestScore = _scoreDrawingUI.BestScore;
 
         _currentScore.text = $"{currentScore}";
         _bestScore.text = $"{bestScore}";

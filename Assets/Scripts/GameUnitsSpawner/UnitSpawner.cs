@@ -20,7 +20,7 @@ public class UnitSpawner : MonoBehaviour
     {
         Vector2 spawnPosition = GetPointAtSegment(_firstPoint, _secondPoint, Random.Range(0f, 1f));
         UnitCanCut gameUnit = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        gameUnit.GetPhysicalMovement.SetPointWhereToFly(GetRandomPointFlyTo());
+        gameUnit.PhysicalMovement.SetPointWhereToFly(GetRandomPointFlyTo());
         gameUnit.SetMainObjects(_mainObjects);
 
         return gameUnit;
