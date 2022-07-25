@@ -16,16 +16,13 @@ public class GameUnit : MonoBehaviour
     [SerializeField] protected float _endScale;
     [SerializeField] protected float _scaleSpeed;
 
-    protected Utils _utils;
     protected GameObject _spriteObject;
     protected bool _isCanChange = true;
 
-    public PhysicalMovement GetPhysicalMovement => _physicalMovement;
+    public PhysicalMovement PhysicalMovement => _physicalMovement;
 
     protected virtual void Start()
     {
-        _utils = new Utils();
-
         _spriteObject = _physicalRotation.gameObject;
         _spriteObject.transform.localScale = new Vector2(_startScale, _startScale);
 

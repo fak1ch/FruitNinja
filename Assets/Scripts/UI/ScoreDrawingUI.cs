@@ -21,8 +21,8 @@ public class ScoreDrawingUI : MonoBehaviour
     private bool _isOpenScore = false;
     private bool _isOpenBestScore = false;
 
-    public int GetCurrentScore => _score;
-    public int GetBestScore => _bestScore;
+    public int CurrentScore => _score;
+    public int BestScore => _bestScore;
 
     private void Start()
     {

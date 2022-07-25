@@ -59,7 +59,8 @@ MonoBehaviour:
   - {fileID: 9098253136942400000}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 1, g: 0.46949857, b: 0, a: 1}
+  _bladeColorCut: {r: 1, g: 0, b: 0, a: 1}
+  _timeUntilDestroy: 10
   _scorePrice: 1
 --- !u!114 &5048751070324639291
 MonoBehaviour:
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 2115939309
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ee888b06f6a9b64794fdef9434551d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
