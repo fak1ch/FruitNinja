@@ -59,20 +59,20 @@ MonoBehaviour:
   - {fileID: 9098253136942400000}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
+  _bladeColorCut: {r: 1, g: 0, b: 0, a: 1}
   _timeUntilDestroy: 10
   _particleSystem: {fileID: 982119752997078753, guid: 90b8b663a357be349b49062a71da6d78, type: 3}
   _effects:
   - {fileID: 8334811599769230035, guid: bdfa1116a113ba84e809491125081f83, type: 3}
-  _currentFruitData:
-    FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
-    BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
-    ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
-    Effects: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
+  _currentUnitData:
+    FruitSprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
+    BladeEffect: {r: 1, g: 0, b: 0, a: 1}
+    ParticleSystem: {r: 1, g: 0, b: 0, a: 1}
+    Effects: {r: 1, g: 0, b: 0, a: 1}
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-  _scorePrice: 1
+  _scorePrice: 100
 --- !u!114 &5048751070324639291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 2115939309
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
