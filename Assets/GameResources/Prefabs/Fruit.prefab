@@ -72,7 +72,9 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-  _scorePrice: 100
+    ScorePrice: 1
+  _scorePrice: 1
+  _fruitScoreEffect: {fileID: 3434754879452894799, guid: 01182923c18e3f3488afb8c8fd857db0, type: 3}
 --- !u!114 &5048751070324639291
 MonoBehaviour:
   m_ObjectHideFlags: 0

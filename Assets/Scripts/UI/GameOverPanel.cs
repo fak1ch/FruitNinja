@@ -36,6 +36,7 @@ public class GameOverPanel : MonoBehaviour
         _unitSpawner.PauseSpawnUnits = false;
         _healthHandler.SetMaxHealth();
         _scoreDrawingUI.RestartCurrentScore();
+        _unitSpawner.SetCurrentWaveDataAsDefault();
 
         gameObject.SetActive(false);
     }

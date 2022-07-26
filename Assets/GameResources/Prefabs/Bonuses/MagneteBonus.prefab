@@ -191,8 +191,8 @@ MonoBehaviour:
     EndScale: 0.8
     ScaleSpeed: 0.2
   _magniteRadius: 8
-  _magnitePower: 0.4
-  _magniteDuration: 1
+  _magnitePower: 0.2
+  _magniteDuration: 5
 --- !u!1001 &1402649437664479051
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -194,6 +194,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
+    CanvasTransform: {fileID: 2132205797}
 --- !u!224 &59949064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1285,7 +1286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849889132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16397953, y: 0.3284893, z: 1.6459141}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1756,6 +1757,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 2
   - FruitSprite: {fileID: 21300000, guid: 54f37729821a47a4e842005f08d61ddc, type: 3}
     BladeEffect: {r: 0.29803923, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 0.29803923, g: 1, b: 0, a: 1}
@@ -1763,6 +1765,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: a3ea2c8d1249221478677b301eb325fa, type: 3}
     BladeEffect: {r: 1, g: 0.7604933, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.7607843, b: 0, a: 1}
@@ -1770,6 +1773,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: a563971405bda52488bfb8d7c1916e63, type: 3}
     BladeEffect: {r: 0.78751564, g: 0, b: 1, a: 1}
     ParticleSystem: {r: 0.7882353, g: 0, b: 1, a: 1}
@@ -1777,6 +1781,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: 0ee888b06f6a9b64794fdef9434551d0, type: 3}
     BladeEffect: {r: 1, g: 0.46949857, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.47058824, b: 0, a: 1}
@@ -1784,6 +1789,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: 71629d2c895886247825e9c272377c42, type: 3}
     BladeEffect: {r: 1, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 1, b: 0, a: 1}
@@ -1791,6 +1797,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
     BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
     ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
@@ -1798,6 +1805,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   - FruitSprite: {fileID: 21300000, guid: 9c86f086f28437f48aeab89da1bd7ec3, type: 3}
     BladeEffect: {r: 1, g: 0.61466914, b: 0.3160377, a: 1}
     ParticleSystem: {r: 1, g: 0.6156863, b: 0.31764707, a: 1}
@@ -1805,12 +1813,12 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _fruitPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
-  _bonusPrefabs:
-  - {fileID: 373880143491167395, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
-  - {fileID: 279477269014366694, guid: 190caf2743ca751459b0f8df4ceecf19, type: 3}
-  - {fileID: 1130858029383175119, guid: 52ecebe7b5951a64daeab955646c7d61, type: 3}
-  - {fileID: 2651107082658918355, guid: e8aba7bbe24d6a64994d35eaad587fe1, type: 3}
+  _bonusHeartPrefab: {fileID: 1130858029383175119, guid: 52ecebe7b5951a64daeab955646c7d61, type: 3}
+  _bonusIceCubePrefab: {fileID: 373880143491167395, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
+  _bonusMagnitePrefab: {fileID: 2651107082658918355, guid: e8aba7bbe24d6a64994d35eaad587fe1, type: 3}
+  _bonusFruitBoxPrefab: {fileID: 279477269014366694, guid: 190caf2743ca751459b0f8df4ceecf19, type: 3}
   _bombPrefab: {fileID: 2814677152691374388, guid: c43c2a1ce18133e448b24444929ad602, type: 3}
   _currentUnits: []
 --- !u!4 &1303467493
@@ -2189,7 +2197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437749211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16397953, y: 0.3284893, z: 1.6459141}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2750,6 +2758,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
+    CanvasTransform: {fileID: 2132205797}
 --- !u!1 &1671175397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,7 +3485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1886099289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3613,6 +3622,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
+    CanvasTransform: {fileID: 2132205797}
 --- !u!1 &1934624100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,61 +4036,26 @@ MonoBehaviour:
     SpawnProcent: 25
   - UnitsSpawner: {fileID: 1903304925}
     SpawnProcent: 25
-  _wavesData:
-  - MaxTimeBetweenUnitSpawns: 0.6
+  _waveData:
+    MaxTimeBetweenUnitSpawns: 0.6
     MinTimeBetweenUnitSpawns: 0.4
+    LastTimeMaxTimeBetweenUnitSpawns: 0.1
     TimeBetweenWaves: 3
+    MinTimeBetweenWaves: 1
     MinGameUnitsInWave: 1
     MaxGameUnitsInWave: 3
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 25
-  - MaxTimeBetweenUnitSpawns: 0.4
-    MinTimeBetweenUnitSpawns: 0.3
-    TimeBetweenWaves: 2.5
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 4
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 50
-  - MaxTimeBetweenUnitSpawns: 0.35
-    MinTimeBetweenUnitSpawns: 0.2
-    TimeBetweenWaves: 2.25
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 5
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 150
-  - MaxTimeBetweenUnitSpawns: 0.3
-    MinTimeBetweenUnitSpawns: 0.2
-    TimeBetweenWaves: 2
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 6
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 300
-  - MaxTimeBetweenUnitSpawns: 0.25
-    MinTimeBetweenUnitSpawns: 0.2
-    TimeBetweenWaves: 1.7
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 8
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 10
-    WorkLessScore: 500
-  - MaxTimeBetweenUnitSpawns: 0.15
-    MinTimeBetweenUnitSpawns: 0.05
-    TimeBetweenWaves: 1
-    MinGameUnitsInWave: 1
-    MaxGameUnitsInWave: 10
-    MinFruitsInWave: 0
-    BombSpawnProcent: 20
-    BonusSpawnProcent: 100
-    WorkLessScore: 1000
+    MinFruitsInWave: 1
+    BombSpawnProcent: 15
+    BonusHeartSpawnProcent: 5
+    BonusIceCubeSpawnProcent: 10
+    BonusMagniteSpawnProcent: 10
+    BonusFruitBoxSpawnProcent: 10
+    maxBonusCountInWave: 1
+  _difficultUpData:
+    SecondsUntilDifficultUp: 5
+    TimeBetweenUnitSpawnsJump: 0.1
+    TimeBetweenWavesJump: 0.5
+    MaxGameUnitsJump: 1
   _minusTimeIfContainerEmpty: 0.5
   _chanceBetweenFruitAndBonus: 50
   _unitsContainer: {fileID: 1303467492}

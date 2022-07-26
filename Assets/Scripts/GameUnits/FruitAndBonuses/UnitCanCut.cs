@@ -10,7 +10,7 @@ public class UnitCanCut : GameUnit
     [SerializeField] private int _maxCutLineProcent = 85;
 
     [Space(10)]
-    [SerializeField] private Color _bladeColorCut;
+    [SerializeField] protected Color _bladeColorCut;
     [SerializeField] private float _timeUntilDestroy;
 
     [Space(10)]
@@ -18,7 +18,7 @@ public class UnitCanCut : GameUnit
     [SerializeField] private Effect[] _effects;
 
     protected MainObjects _mainObjects;
-    public UnitData _currentUnitData;
+    public FruitData _currentUnitData;
     public Color BladeColorCut => _bladeColorCut;
 
 
@@ -72,17 +72,6 @@ public class UnitCanCut : GameUnit
     protected virtual void CutResult()
     {
         StartCoroutine(DestroyGameObject(0));
-    }
-
-    public void SetFruitData(UnitData fruitData)
-    {
-        _currentUnitData = fruitData;
-
-        _bladeColorCut = _currentUnitData.BladeEffect;
-        _spriteRenderer.sprite = _currentUnitData.FruitSprite;
-        _startScale = _currentUnitData.StartScale;
-        _endScale = _currentUnitData.EndScale;
-        _scaleSpeed = _currentUnitData.ScaleSpeed;
     }
 
     public void SetMainObjects(MainObjects mainObjects)
