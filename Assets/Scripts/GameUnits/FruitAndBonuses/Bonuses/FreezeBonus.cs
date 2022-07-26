@@ -16,6 +16,7 @@ public class FreezeBonus : UnitCanCut
     {
         Time.timeScale = _timeScale;
         _spriteRenderer.enabled = false;
+        _unitShadow.gameObject.SetActive(false);
         yield return new WaitForSeconds(_timeFreeze);
         Time.timeScale = 1f;
         Destroy(gameObject);

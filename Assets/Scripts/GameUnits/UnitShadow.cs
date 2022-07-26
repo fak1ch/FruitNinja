@@ -10,7 +10,6 @@ public class UnitShadow : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private PhysicalRotation _physicalRotation;
 
     private float _parentStartScale;
     private float _parentEndScale;
@@ -26,12 +25,6 @@ public class UnitShadow : MonoBehaviour
     {
         _spriteRenderer.sprite = sprite;
         _spriteRenderer.color = color;
-    }
-
-    public void SetShadowRotation(PhysicalRotation parentRotation)
-    {
-        _physicalRotation.Multiplier = parentRotation.Multiplier;
-        _physicalRotation.RotateSpeed = parentRotation.RotateSpeed;
     }
 
     public void SetShadowScaling(float parentStartScale, float parentEndScale)
@@ -63,5 +56,10 @@ public class UnitShadow : MonoBehaviour
         newPosition += _currentOffset;
 
         transform.position = newPosition;
+    }
+
+    public void ChangeShadowRotation(Quaternion newRotation)
+    {
+        transform.rotation = newRotation;
     }
 }

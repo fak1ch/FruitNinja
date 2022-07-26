@@ -9,17 +9,18 @@ public class HalfUnit : GameUnit
     [SerializeField] private float _maxPlusSpeed = 2.5f;
     [SerializeField] private float _timeUntilDestroy = 3f;
 
-    public void SpawnHalfUnit(Sprite sprite, Vector2 newVelocity, Vector2 newPosition, float newScale, bool isLeftHalf)
+    public void SpawnHalfUnit(Sprite sprite, Vector2 newVelocity, Vector2 newShadowPosition, float newShadowScale, bool isLeftHalf)
     {
         gameObject.SetActive(true);
         transform.parent = null;
         _physicalMovement.SetVelocityVector(newVelocity);
+        _canChangeGameUnitScale = false;
 
-        _isCanChange = false;
-        _unitShadow.SetShadowPosition(newPosition);
+        _unitShadow.SetShadowPosition(newShadowPosition);
         _unitShadow.transform.parent = null;
-        _unitShadow.transform.localScale = new Vector2(newScale, newScale);
+        _unitShadow.transform.localScale = new Vector2(newShadowScale, newShadowScale);
         _unitShadow.transform.parent = this.gameObject.transform;
+        _canChangeShadowScaleAndPosition = false;
 
         SetSprite(sprite);
         RandomIncreaseVelocityX(isLeftHalf);

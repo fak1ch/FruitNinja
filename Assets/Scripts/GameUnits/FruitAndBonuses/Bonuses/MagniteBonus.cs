@@ -18,11 +18,15 @@ public class MagniteBonus : UnitCanCut
     protected override void CutResult()
     {
         _magniteIsWork = true;
+        _canChangeGameUnitScale = false;
+
         StartCoroutine(MagniteWork());
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (_magniteIsWork == true)
         {
             _physicalMovement.SetVelocityVector(new Vector2(0, 0));

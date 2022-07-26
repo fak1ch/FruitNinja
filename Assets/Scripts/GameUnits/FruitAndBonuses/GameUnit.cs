@@ -17,7 +17,9 @@ public class GameUnit : MonoBehaviour
     [SerializeField] protected float _scaleSpeed;
 
     protected GameObject _spriteObject;
-    protected bool _isCanChange = true;
+
+    protected bool _canChangeGameUnitScale = true;
+    protected bool _canChangeShadowScaleAndPosition = true;
 
     public PhysicalMovement PhysicalMovement => _physicalMovement;
 
@@ -27,14 +29,25 @@ public class GameUnit : MonoBehaviour
         _spriteObject.transform.localScale = new Vector2(_startScale, _startScale);
 
         _unitShadow.SetShadowSprite(_spriteRenderer.sprite, _shadowColor);
-        _unitShadow.SetShadowRotation(_physicalRotation);
         _unitShadow.SetShadowScaling(_startScale, _endScale);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (_isCanChange)
+        if (_canChangeGameUnitScale)
             ChangeUnitScale();
+
+        ChangeShadow();
+    }
+
+    private void ChangeShadow()
+    {
+        if (_canChangeShadowScaleAndPosition == true)
+        {
+            _unitShadow.ChangeShadowScale(_spriteObject.transform.localScale);
+            _unitShadow.ChangeShadowPosition(_spriteObject.transform.position, _spriteObject.transform.localScale);
+        }
+        _unitShadow.ChangeShadowRotation(_spriteObject.transform.rotation);
     }
 
     private void ChangeUnitScale()
@@ -48,8 +61,5 @@ public class GameUnit : MonoBehaviour
         currentScale.y = Mathf.Clamp(currentScale.y, _endScale, currentScale.y);
 
         _spriteObject.transform.localScale = currentScale;
-
-        _unitShadow.ChangeShadowScale(_spriteObject.transform.localScale);
-        _unitShadow.ChangeShadowPosition(_spriteObject.transform.position, _spriteObject.transform.localScale);
     }
 }
