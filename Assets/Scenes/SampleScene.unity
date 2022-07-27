@@ -194,7 +194,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
-    CanvasTransform: {fileID: 2132205797}
+    UITransform: {fileID: 2132205797}
 --- !u!224 &59949064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1379,7 +1379,7 @@ MonoBehaviour:
   _scorePanel: {fileID: 318189303}
   _currentScoreText: {fileID: 509430645}
   _bestScoreText: {fileID: 1810808606}
-  _textLerpSpeed: 1
+  _textLerpSpeed: 2
 --- !u!1 &962511162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315e887890517054ba4dcb18d282c998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBetweenCuts: 0.2
+  _timeBetweenCuts: 0.1
   _minCutsForCombo: 2
   _blade: {fileID: 1671175399}
   _comboDrawingUI: {fileID: 1178491945}
@@ -1797,7 +1797,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 3
   - FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
     BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
     ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
@@ -1920,10 +1920,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1886099292}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: RestartGame
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1345566610}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2422,10 +2422,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1886099292}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: ReturnToMenu
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1558889844}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2736,7 +2736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: -88.03003, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1653448138
@@ -2758,7 +2758,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
-    CanvasTransform: {fileID: 2132205797}
+    UITransform: {fileID: 2132205797}
 --- !u!1 &1671175397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,7 +2804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minBladeSpeedForCut: 0.01
-  _bladeRadius: 1
+  _bladeRadius: 1.2
   _speedChangeBladeColor: 1
   _bladeCanCut: 0
   _trailRenderer: {fileID: 1671175401}
@@ -2908,7 +2908,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0.5686275}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3144,8 +3144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf47a8e11b9d1c48a3a94776200243a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetX: 1
-  _offsetY: 1
+  _offsetX: 1.5
+  _offsetY: 1.5
   _timeBetweenCheck: 0.2
   _mainCamera: {fileID: 519420031}
   _unitsContainer: {fileID: 1303467492}
@@ -3479,6 +3479,7 @@ GameObject:
   - component: {fileID: 1886099291}
   - component: {fileID: 1886099290}
   - component: {fileID: 1886099292}
+  - component: {fileID: 1886099293}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -3561,10 +3562,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScore: {fileID: 142334407}
   _bestScore: {fileID: 1987443048}
+  _canvasGroup: {fileID: 1886099293}
   _scoreDrawingUI: {fileID: 951800332}
   _unitSpawner: {fileID: 2068215288}
   _healthHandler: {fileID: 1934624102}
   _loadingHandler: {fileID: 603810376}
+  _blade: {fileID: 1671175397}
+--- !u!225 &1886099293
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886099288}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1903304923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,7 +3637,7 @@ MonoBehaviour:
   _mainObjects:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
-    CanvasTransform: {fileID: 2132205797}
+    UITransform: {fileID: 2132205797}
 --- !u!1 &1934624100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3671,6 +3686,10 @@ MonoBehaviour:
   _healthPanel: {fileID: 1943435594}
   _heartPrefab: {fileID: 7060792785873612726, guid: 2b174e812e1f5b64cbe7c33b52e94823, type: 3}
   _gameOverPanel: {fileID: 1886099292}
+  _unityContainer: {fileID: 1303467492}
+  _grid: {fileID: 1943435595}
+  _health: []
+  IsGameOver: 0
 --- !u!1 &1942689386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,9 +4052,9 @@ MonoBehaviour:
   - UnitsSpawner: {fileID: 59949063}
     SpawnProcent: 50
   - UnitsSpawner: {fileID: 1653448138}
-    SpawnProcent: 25
+    SpawnProcent: 40
   - UnitsSpawner: {fileID: 1903304925}
-    SpawnProcent: 25
+    SpawnProcent: 20
   _waveData:
     MaxTimeBetweenUnitSpawns: 0.6
     MinTimeBetweenUnitSpawns: 0.4
@@ -4060,6 +4079,7 @@ MonoBehaviour:
   _chanceBetweenFruitAndBonus: 50
   _unitsContainer: {fileID: 1303467492}
   _scoreDrawingUI: {fileID: 951800332}
+  _healthHandler: {fileID: 1934624102}
 --- !u!4 &2068215289
 Transform:
   m_ObjectHideFlags: 0

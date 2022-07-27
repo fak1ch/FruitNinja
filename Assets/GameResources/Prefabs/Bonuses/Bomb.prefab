@@ -188,9 +188,11 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _bombRadius: 5
   _explosivePower: 1
   _healthCount: 1
+  _boomLabelEffect: {fileID: 9120802022987139173, guid: 906a5c21853484644b40a3fa87c029d7, type: 3}
 --- !u!1001 &1203046136066040238
 PrefabInstance:
   m_ObjectHideFlags: 0

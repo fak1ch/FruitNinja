@@ -5,10 +5,13 @@ using UnityEngine;
 public class HealBonus : UnitCanCut
 {
     [SerializeField] private int _addHealCount;
+    [SerializeField] private HearthUI _hearthUI;
 
     protected override void CutResult()
     {
-        _mainObjects.HealthHandler.AddHealth(_addHealCount);
+        var hearth = Instantiate(_hearthUI, _mainObjects.UITransform);
+        hearth.transform.position = transform.position;
+        hearth.MoveToPosition(_mainObjects.HealthHandler, _addHealCount);
         Destroy(gameObject);
     }
 }

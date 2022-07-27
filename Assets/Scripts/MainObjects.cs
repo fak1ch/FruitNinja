@@ -6,5 +6,5 @@ public class MainObjects
 {
     public UnitsContainer UnitsContainer;
     public HealthHandler HealthHandler;
-    public RectTransform CanvasTransform;
+    public Transform UITransform;
 }

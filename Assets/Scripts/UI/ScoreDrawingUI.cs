@@ -86,7 +86,7 @@ public class ScoreDrawingUI : MonoBehaviour
     {
         if (openingFlag == true)
         {
-            _lerpSpeed += Time.deltaTime * _textLerpSpeed;
+            _lerpSpeed += Time.deltaTime * _textLerpSpeed * _textLerpSpeed;
 
             value = (int)Mathf.Lerp(value, needValue, _lerpSpeed);
 

@@ -15,8 +15,9 @@ public class ComplexSpawnHandler : MonoBehaviour
     [Space(10)]
     [SerializeField] private UnitsContainer _unitsContainer;
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
+    [SerializeField] private HealthHandler _healthHandler;
 
-    [SerializeField] private WaveData _startWaveData;
+    private WaveData _startWaveData;
     private float _timeBetweenWaves;
     private float _timeUntilDifficultUp;
     private bool _isReduced = false;
@@ -26,7 +27,7 @@ public class ComplexSpawnHandler : MonoBehaviour
     private void Start()
     {
         _startWaveData = (WaveData)_waveData.Clone();
-        _timeBetweenWaves = _minusTimeIfContainerEmpty;
+        _timeBetweenWaves = 1f;
         _timeUntilDifficultUp = _difficultUpData.SecondsUntilDifficultUp;
     }
 
@@ -67,7 +68,10 @@ public class ComplexSpawnHandler : MonoBehaviour
         int fruitsCount = Random.Range(_waveData.MinFruitsInWave, gameUnitsMaxCount + 1);
 
         AddUnitToList(bonusPrefabs, _waveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
-        AddUnitToList(bonusPrefabs, _waveData.BonusHeartSpawnProcent, _unitsContainer.GetBonusHeart());
+
+        if (_healthHandler.IsMaxHealth == false)
+            AddUnitToList(bonusPrefabs, _waveData.BonusHeartSpawnProcent, _unitsContainer.GetBonusHeart());
+
         AddUnitToList(bonusPrefabs, _waveData.BonusIceCubeSpawnProcent, _unitsContainer.GetBonusIceCube());
         AddUnitToList(bonusPrefabs, _waveData.BonusMagniteSpawnProcent, _unitsContainer.GetBonusMagnite());
         AddUnitToList(bonusPrefabs, _waveData.BonusFruitBoxSpawnProcent, _unitsContainer.GetBonusFruitBox());

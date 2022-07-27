@@ -177,7 +177,7 @@ MonoBehaviour:
   - {fileID: 0}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 0.05724907, g: 0, b: 1, a: 0}
+  _bladeColorCut: {r: 0.05724907, g: 0, b: 1, a: 1}
   _timeUntilDestroy: 10
   _particleSystem: {fileID: 0}
   _effects:
@@ -190,6 +190,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _magniteRadius: 8
   _magnitePower: 0.2
   _magniteDuration: 5

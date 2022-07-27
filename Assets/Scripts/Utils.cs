@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public static class Utils
 {
@@ -22,6 +23,14 @@ public static class Utils
         sprites[1] = Sprite.Create(texture, cutRectangleSecond, new Vector2(pivotXSecondSprite, 0.5f), 100);
 
         return sprites;
+    }
+
+    public static void PlayButtonAnimation(Transform buttonTransform)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(buttonTransform.DOScale(new Vector2(0.8f, 0.8f), 0.15f));
+        sequence.Append(buttonTransform.DOScale(new Vector2(1f, 1f), 0.15f));
+        sequence.PrependInterval(0.1f);
     }
 
     public static bool CheckRandomless(int procent)

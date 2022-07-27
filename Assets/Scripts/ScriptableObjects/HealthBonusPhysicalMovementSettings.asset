@@ -16,5 +16,5 @@ MonoBehaviour:
   AirDrug: 10
   MinImpulseX: 0.1
   MaxImpulseX: 0.2
-  MinImpulseY: 0.15
-  MaxImpulseY: 0.25
+  MinImpulseY: 0.1
+  MaxImpulseY: 0.2
