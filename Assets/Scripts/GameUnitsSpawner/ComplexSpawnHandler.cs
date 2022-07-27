@@ -5,26 +5,30 @@ using UnityEngine;
 public class ComplexSpawnHandler : MonoBehaviour
 {
     [SerializeField] private SpawnerData[] _spawnersData;
-    [SerializeField] private UnitsWaveData[] _wavesData;
+    [SerializeField] private WaveData _waveData;
+    [SerializeField] private ComplexityAlgorithmData _difficultUpData;
+
+    [Space(10)]
     [SerializeField] private float _minusTimeIfContainerEmpty = 0.5f;
     [SerializeField] private int _chanceBetweenFruitAndBonus = 50;
 
     [Space(10)]
     [SerializeField] private UnitsContainer _unitsContainer;
     [SerializeField] private ScoreDrawingUI _scoreDrawingUI;
+    [SerializeField] private HealthHandler _healthHandler;
 
+    private WaveData _startWaveData;
     private float _timeBetweenWaves;
-    private UnitsWaveData _currentWaveData;
-    private int _currentWaveDataIndex;
+    private float _timeUntilDifficultUp;
     private bool _isReduced = false;
 
     public bool PauseSpawnUnits { get; set; }
 
     private void Start()
     {
-        _currentWaveData = _wavesData[0];
-        _currentWaveDataIndex = 0;
-        _timeBetweenWaves = _currentWaveData.TimeBetweenWaves;
+        _startWaveData = (WaveData)_waveData.Clone();
+        _timeBetweenWaves = 1f;
+        _timeUntilDifficultUp = _difficultUpData.SecondsUntilDifficultUp;
     }
 
     private void Update()
@@ -34,50 +38,68 @@ public class ComplexSpawnHandler : MonoBehaviour
             if (_timeBetweenWaves <= 0)
             {
                 SpawnWave();
-                _timeBetweenWaves = _currentWaveData.TimeBetweenWaves;
+                _timeBetweenWaves = _waveData.TimeBetweenWaves;
             }
             else
             {
                 _timeBetweenWaves -= Time.deltaTime;
             }
+
+            if (_timeUntilDifficultUp <= 0)
+            {
+                DifficultUp();
+                _timeUntilDifficultUp = _difficultUpData.SecondsUntilDifficultUp;
+            }
+            else
+            {
+                _timeUntilDifficultUp -= Time.deltaTime;
+            }
         }
 
-        CheckingGameComplication();
         CheckingCurrentUnits();
     }
 
     private void SpawnWave()
     {
-        int gameUnitsMaxCount = Random.Range(_currentWaveData.MinGameUnitsInWave, _currentWaveData.MaxGameUnitsInWave + 1);
+        int gameUnitsMaxCount = Random.Range(_waveData.MinGameUnitsInWave, _waveData.MaxGameUnitsInWave + 1);
 
         List<UnitCanCut> bonusPrefabs = new List<UnitCanCut>(gameUnitsMaxCount);
 
-        int fruitsCount = Random.Range(_currentWaveData.MinFruitsInWave, gameUnitsMaxCount + 1);
+        int fruitsCount = Random.Range(_waveData.MinFruitsInWave, gameUnitsMaxCount + 1);
 
-        AddUnitToList(bonusPrefabs, _currentWaveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
-        AddUnitToList(bonusPrefabs, _currentWaveData.BonusSpawnProcent, _unitsContainer.GetRandomBonusPrefab());
+        AddUnitToList(bonusPrefabs, _waveData.BombSpawnProcent, _unitsContainer.GetBombPrefab());
 
-        StartCoroutine(SpawnGameUnits(bonusPrefabs, gameUnitsMaxCount - fruitsCount));
+        if (_healthHandler.IsMaxHealth == false)
+            AddUnitToList(bonusPrefabs, _waveData.BonusHeartSpawnProcent, _unitsContainer.GetBonusHeart());
+
+        AddUnitToList(bonusPrefabs, _waveData.BonusIceCubeSpawnProcent, _unitsContainer.GetBonusIceCube());
+        AddUnitToList(bonusPrefabs, _waveData.BonusMagniteSpawnProcent, _unitsContainer.GetBonusMagnite());
+        AddUnitToList(bonusPrefabs, _waveData.BonusFruitBoxSpawnProcent, _unitsContainer.GetBonusFruitBox());
+
+        if (bonusPrefabs.Count > _waveData.maxBonusCountInWave)
+        {
+            int count = bonusPrefabs.Count - _waveData.maxBonusCountInWave;
+            while (count > 0)
+            {
+                bonusPrefabs.RemoveAt(Random.Range(0, count));
+                count--;
+            }
+        }
+
+        StartCoroutine(SpawnGameUnits(bonusPrefabs, fruitsCount - bonusPrefabs.Count));
     }
 
     private void AddUnitToList(List<UnitCanCut> units, int procent, UnitCanCut unitPrefab)
     {
         if (Utils.CheckRandomless(procent) == true)
         {
-            if (units.Count < units.Capacity)
-            {
-                units.Add(unitPrefab);
-            }
-            else
-            {
-                units[Random.Range(0, units.Count)] = unitPrefab;
-            }
+            units.Add(unitPrefab);
         }
     }
 
     private IEnumerator SpawnGameUnits(List<UnitCanCut> bonusPrefabs, int fruitCount)
     {
-        float timeBetweenUnitSpawns = Random.Range(_currentWaveData.MinTimeBetweenUnitSpawns, _currentWaveData.MaxTimeBetweenUnitSpawns);
+        float timeBetweenUnitSpawns = Random.Range(_waveData.MinTimeBetweenUnitSpawns, _waveData.MaxTimeBetweenUnitSpawns);
 
         while (true)
         {
@@ -110,25 +132,17 @@ public class ComplexSpawnHandler : MonoBehaviour
         }
     }
 
-    private void CheckingGameComplication()
+    private void DifficultUp()
     {
-        int currentScore = _scoreDrawingUI.CurrentScore;
-        int i = _currentWaveDataIndex + 1;
+        _waveData.MinTimeBetweenUnitSpawns -= _difficultUpData.TimeBetweenUnitSpawnsJump;
+        _waveData.MaxTimeBetweenUnitSpawns -= _difficultUpData.TimeBetweenUnitSpawnsJump;
+        _waveData.MinTimeBetweenUnitSpawns = Mathf.Clamp(_waveData.MinTimeBetweenUnitSpawns, _waveData.LastTimeMaxTimeBetweenUnitSpawns, _waveData.MinTimeBetweenUnitSpawns);
+        _waveData.MaxTimeBetweenUnitSpawns = Mathf.Clamp(_waveData.MaxTimeBetweenUnitSpawns, _waveData.LastTimeMaxTimeBetweenUnitSpawns, _waveData.MaxTimeBetweenUnitSpawns);
 
-        if (i < _wavesData.Length)
-        {
-            while(i < _wavesData.Length)
-            {
-                if (currentScore >= _wavesData[_currentWaveDataIndex].WorkLessScore
-                    && currentScore <= _wavesData[i].WorkLessScore)
-                {
-                    _currentWaveData = _wavesData[i];
-                    _currentWaveDataIndex = i;
-                }
+        _waveData.TimeBetweenWaves -= _difficultUpData.TimeBetweenWavesJump;
+        _waveData.TimeBetweenWaves = Mathf.Clamp(_waveData.TimeBetweenWaves, _waveData.MinTimeBetweenWaves, _waveData.TimeBetweenWaves);
 
-                i++;
-            }
-        }
+        _waveData.MaxGameUnitsInWave += _difficultUpData.MaxGameUnitsJump;
     }
 
     private void CheckingCurrentUnits()
@@ -164,6 +178,6 @@ public class ComplexSpawnHandler : MonoBehaviour
 
     public void SetCurrentWaveDataAsDefault()
     {
-        _currentWaveData = _wavesData[0];
+        _waveData = (WaveData)_startWaveData.Clone();
     }
 }

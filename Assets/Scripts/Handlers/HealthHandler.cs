@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthHandler : MonoBehaviour
 {
@@ -14,8 +15,15 @@ public class HealthHandler : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private GameOverPanel _gameOverPanel;
+    [SerializeField] private UnitsContainer _unityContainer;
+    [SerializeField] private GridLayoutGroup _grid;
 
-    private List<GameObject> _health = new List<GameObject>();
+    [SerializeField] private List<GameObject> _health = new List<GameObject>();
+
+    private float _offset = 0;
+
+    public bool IsMaxHealth => _currentHealth == _maxHealth;
+    public bool IsGameOver = false;
 
     private void Start()
     {
@@ -24,6 +32,7 @@ public class HealthHandler : MonoBehaviour
 
         AddHealth(_currentHealth);
     }
+    
 
     public void AddHealth(int healthCount)
     {
@@ -70,11 +79,33 @@ public class HealthHandler : MonoBehaviour
         AddHealth(_maxHealth);
     }
 
+    public Vector2 GetPositionToNextHeart()
+    {
+        if (_offset == 0)
+        {
+            _offset = _health[0].transform.position.x - _health[1].transform.position.x;
+        }
+
+        Vector2 lastHeartPosition = _health[0].transform.position;
+        lastHeartPosition.x += _offset;
+
+        return lastHeartPosition;
+    }
+
     private void CheckZeroHealth()
     {
-        if (_currentHealth == 0)
+        if (_currentHealth == 0 && IsGameOver == false)
         {
+            IsGameOver = true;
             _gameOverPanel.PauseTheGame();
+        }
+    }
+
+    private void Update()
+    {
+        if (_unityContainer.CurrentUnitsCount == 0 && IsGameOver == true)
+        {
+            IsGameOver = false;
             _gameOverPanel.ShowGameOverPanel();
         }
     }

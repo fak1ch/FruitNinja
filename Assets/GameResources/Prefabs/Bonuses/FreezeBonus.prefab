@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 373880143491167392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 3539866333504415587}
   - {fileID: 7468381995958846853}
@@ -80,7 +80,7 @@ MonoBehaviour:
   - {fileID: 4423646840558661790}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 0, g: 0.97092485, b: 1, a: 0}
+  _bladeColorCut: {r: 0, g: 0.97092485, b: 1, a: 1}
   _timeUntilDestroy: 10
   _particleSystem: {fileID: 0}
   _effects:
@@ -93,6 +93,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _timeScale: 0.2
   _timeFreeze: 2
 --- !u!1 &3539866333504415644
@@ -442,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 6136407630389483967, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: _physicalRotation
       value: 
-      objectReference: {fileID: 1722432657093336315}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
 --- !u!4 &7468381995958846853 stripped
@@ -459,16 +460,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18978e3fce948344d87df77aa98fd0c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1722432657093336315 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2696156998357270720, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
-  m_PrefabInstance: {fileID: 3642818230769179707}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432bf0004c6ec8740bbe5268d625d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

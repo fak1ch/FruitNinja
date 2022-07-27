@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5048751070324639294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 8214759199199663613}
   - {fileID: 2631662939194717979}
@@ -59,20 +59,22 @@ MonoBehaviour:
   - {fileID: 9098253136942400000}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 1, g: 0, b: 0, a: 1}
+  _bladeColorCut: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
   _timeUntilDestroy: 10
   _particleSystem: {fileID: 982119752997078753, guid: 90b8b663a357be349b49062a71da6d78, type: 3}
   _effects:
   - {fileID: 8334811599769230035, guid: bdfa1116a113ba84e809491125081f83, type: 3}
   _currentUnitData:
-    FruitSprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
-    BladeEffect: {r: 1, g: 0, b: 0, a: 1}
-    ParticleSystem: {r: 1, g: 0, b: 0, a: 1}
-    Effects: {r: 1, g: 0, b: 0, a: 1}
+    FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
+    BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
+    ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
+    Effects: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-  _scorePrice: 100
+    ScorePrice: 1
+  _scorePrice: 1
+  _fruitScoreEffect: {fileID: 3434754879452894799, guid: 01182923c18e3f3488afb8c8fd857db0, type: 3}
 --- !u!114 &5048751070324639291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 2115939309
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b162a5d8a0e09248a228ef6716f344e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -255,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 6136407630389483967, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: _physicalRotation
       value: 
-      objectReference: {fileID: 6109063879182691941}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
 --- !u!4 &2631662939194717979 stripped
@@ -272,17 +274,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18978e3fce948344d87df77aa98fd0c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6109063879182691941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2696156998357270720, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
-  m_PrefabInstance: {fileID: 8191323944181984933}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432bf0004c6ec8740bbe5268d625d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8214759198059620081

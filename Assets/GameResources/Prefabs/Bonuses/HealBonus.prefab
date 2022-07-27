@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1130858029383175117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 4296986876754106382}
   - {fileID: 7864642552137808616}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _physicalScriptableObject: {fileID: 11400000, guid: 94c7613afcbbc4e42ab977c5985f7bfd, type: 2}
+    _physicalScriptableObject: {fileID: 11400000, guid: c5017ea6c3bc0144baaa68f170a182cf, type: 2}
     GravityScale: 9.81
     AirDrug: 10
     MinImpulseX: 5
@@ -80,7 +80,7 @@ MonoBehaviour:
   - {fileID: 4026820863496261619}
   _minCutLineProcent: 20
   _maxCutLineProcent: 80
-  _bladeColorCut: {r: 0.7830189, g: 0, b: 0, a: 0}
+  _bladeColorCut: {r: 0.7830189, g: 0, b: 0, a: 1}
   _timeUntilDestroy: 10
   _particleSystem: {fileID: 0}
   _effects:
@@ -93,7 +93,9 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _addHealCount: 1
+  _hearthUI: {fileID: 889796774640193656, guid: f792591bc62cd2c42bc6fbd1cdb51d7e, type: 3}
 --- !u!1 &4296986876754106609
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 6136407630389483967, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: _physicalRotation
       value: 
-      objectReference: {fileID: 2118547803075519382}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
 --- !u!4 &7864642552137808616 stripped
@@ -288,17 +290,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18978e3fce948344d87df77aa98fd0c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2118547803075519382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2696156998357270720, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
-  m_PrefabInstance: {fileID: 4038660697918595926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432bf0004c6ec8740bbe5268d625d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4296986875747232514

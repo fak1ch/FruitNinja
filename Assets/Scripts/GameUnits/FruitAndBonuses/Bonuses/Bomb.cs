@@ -7,6 +7,7 @@ public class Bomb : UnitCanCut
     [SerializeField] private float _bombRadius = 3f;
     [SerializeField] private float _explosivePower = 0.1f;
     [SerializeField] private int _healthCount = 1;
+    [SerializeField] private GameObject _boomLabelEffect;
 
     protected override void CutResult()
     {
@@ -24,7 +25,9 @@ public class Bomb : UnitCanCut
             units[i].PhysicalMovement.AddToVelocityVector(moveVector);
         }
 
-        Destroy(gameObject);
+        Instantiate(_boomLabelEffect, transform.position, Quaternion.identity);
+
+        base.CutResult();
     }
 
     protected override void CutSprite(Vector2 mousePosition)

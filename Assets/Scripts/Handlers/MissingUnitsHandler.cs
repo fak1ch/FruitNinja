@@ -45,26 +45,27 @@ public class MissingUnitsHandler : MonoBehaviour
 
     private void CheckMissingFruits()
     {
-        var fruits = _unitsContainer.CurrentUnits;
+        var units = _unitsContainer.CurrentUnits;
 
-        for(int i = 0; i < fruits.Count; i++)
+        for(int i = 0; i < units.Count; i++)
         {
-            if (fruits[i].TryGetComponent(out Fruit fruit))
+            if (isOutOfBounds(units[i]) == true)
             {
-                if (isOutOfBounds(fruit) == true)
+                if (units[i].gameObject.TryGetComponent(out Fruit fruit))
                 {
-                    _unitsContainer.RemoveUnit(fruit);
                     _healthHandler.RemoveHealth(1);
-                    Destroy(fruit.gameObject);
                 }
+
+                Destroy(units[i].gameObject);
+                units.RemoveAt(i);
             }
         }
     }
 
-    private bool isOutOfBounds(Fruit fruit)
+    private bool isOutOfBounds(UnitCanCut unit)
     {
-        float x = fruit.transform.position.x;
-        float y = fruit.transform.position.y;
+        float x = unit.transform.position.x;
+        float y = unit.transform.position.y;
 
         float leftBoundX = _leftCameraPositionX - _offsetX;
         float rightBoundX = _rightCameraPositionX + _offsetX;

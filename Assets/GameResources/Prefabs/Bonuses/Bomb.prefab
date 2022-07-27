@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 2814677152691374389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 1378055700385241846}
   - {fileID: 5015587407882614800}
@@ -188,9 +188,11 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
+    ScorePrice: 1
   _bombRadius: 5
   _explosivePower: 1
   _healthCount: 1
+  _boomLabelEffect: {fileID: 9120802022987139173, guid: 906a5c21853484644b40a3fa87c029d7, type: 3}
 --- !u!1001 &1203046136066040238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 6136407630389483967, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
       propertyPath: _physicalRotation
       value: 
-      objectReference: {fileID: 3880054039359758702}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
 --- !u!4 &5015587407882614800 stripped
@@ -286,16 +288,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18978e3fce948344d87df77aa98fd0c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3880054039359758702 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2696156998357270720, guid: 360a32ad39fcd52479cde1a51cb52b2e, type: 3}
-  m_PrefabInstance: {fileID: 1203046136066040238}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 432bf0004c6ec8740bbe5268d625d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
