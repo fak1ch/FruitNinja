@@ -83,4 +83,12 @@ public class UnitsContainer : MonoBehaviour
 
         return gameUnits;
     }
+
+    public void RefreshTimeScaleForUnits()
+    {
+        for(int i = 0; i < _currentUnits.Count; i++)
+        {
+            _currentUnits[i].RefreshTimeScale();
+        }
+    }
 }

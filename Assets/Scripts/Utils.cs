@@ -3,6 +3,8 @@ using DG.Tweening;
 
 public static class Utils
 {
+    public static float TimeScale = 1;
+
     public static Sprite[] GetTwoSeparatedSprites(Texture2D texture, float cutLineProcent)
     {
         Sprite[] sprites = new Sprite[2];

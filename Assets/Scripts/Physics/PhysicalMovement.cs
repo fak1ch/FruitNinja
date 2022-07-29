@@ -9,6 +9,8 @@ public class PhysicalMovement : MonoBehaviour
     [Space(10)]
     [SerializeField] Vector2 _velocity;
 
+    public float TimeScale;
+
     private void Awake()
     {
         _data.SetValuesFromSctiptableObject();
@@ -17,7 +19,7 @@ public class PhysicalMovement : MonoBehaviour
     private void Update()
     {
         Vector2 tempPosition = transform.position;
-        Vector2 newPosition = tempPosition + _velocity * Time.deltaTime * _data.GravityScale;
+        Vector2 newPosition = tempPosition + _velocity * Time.deltaTime * _data.GravityScale * TimeScale;
         transform.position = Vector2.MoveTowards(transform.position, newPosition, _data.GravityScale);
 
         _velocity.y = ApplyGravity(_velocity.y);
@@ -47,11 +49,11 @@ public class PhysicalMovement : MonoBehaviour
     {
         if (_data.AirDrug != 0)
         {
-            number -= _data.GravityScale * Time.deltaTime / _data.AirDrug;
+            number -= _data.GravityScale * Time.deltaTime * TimeScale / _data.AirDrug;
         }
         else
         {
-            number -= _data.GravityScale * Time.deltaTime;
+            number -= _data.GravityScale * Time.deltaTime * TimeScale;
         }
 
         return number;

@@ -1757,7 +1757,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 2
+    ScorePrice: 200
   - FruitSprite: {fileID: 21300000, guid: 54f37729821a47a4e842005f08d61ddc, type: 3}
     BladeEffect: {r: 0.29803923, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 0.29803923, g: 1, b: 0, a: 1}
@@ -1765,7 +1765,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 50
   - FruitSprite: {fileID: 21300000, guid: a3ea2c8d1249221478677b301eb325fa, type: 3}
     BladeEffect: {r: 1, g: 0.7604933, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.7607843, b: 0, a: 1}
@@ -1773,7 +1773,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 70
   - FruitSprite: {fileID: 21300000, guid: a563971405bda52488bfb8d7c1916e63, type: 3}
     BladeEffect: {r: 0.78751564, g: 0, b: 1, a: 1}
     ParticleSystem: {r: 0.7882353, g: 0, b: 1, a: 1}
@@ -1781,7 +1781,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 80
   - FruitSprite: {fileID: 21300000, guid: 0ee888b06f6a9b64794fdef9434551d0, type: 3}
     BladeEffect: {r: 1, g: 0.46949857, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.47058824, b: 0, a: 1}
@@ -1789,7 +1789,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 100
   - FruitSprite: {fileID: 21300000, guid: 71629d2c895886247825e9c272377c42, type: 3}
     BladeEffect: {r: 1, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 1, b: 0, a: 1}
@@ -1797,7 +1797,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 3
+    ScorePrice: 180
   - FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
     BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
     ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
@@ -1805,7 +1805,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 166
   - FruitSprite: {fileID: 21300000, guid: 9c86f086f28437f48aeab89da1bd7ec3, type: 3}
     BladeEffect: {r: 1, g: 0.61466914, b: 0.3160377, a: 1}
     ParticleSystem: {r: 1, g: 0.6156863, b: 0.31764707, a: 1}
@@ -1813,7 +1813,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 133
   _fruitPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
   _bonusHeartPrefab: {fileID: 1130858029383175119, guid: 52ecebe7b5951a64daeab955646c7d61, type: 3}
   _bonusIceCubePrefab: {fileID: 373880143491167395, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
@@ -2803,10 +2803,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37a2b1b4ef9d434896324c1db693140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minBladeSpeedForCut: 0.01
+  _minBladeSpeedForCut: 0.3
   _bladeRadius: 1.2
   _speedChangeBladeColor: 1
-  _bladeCanCut: 0
   _trailRenderer: {fileID: 1671175401}
   _unitsContainer: {fileID: 1303467492}
 --- !u!96 &1671175401
@@ -4065,7 +4064,7 @@ MonoBehaviour:
     MaxGameUnitsInWave: 3
     MinFruitsInWave: 1
     BombSpawnProcent: 15
-    BonusHeartSpawnProcent: 5
+    BonusHeartSpawnProcent: 30
     BonusIceCubeSpawnProcent: 10
     BonusMagniteSpawnProcent: 10
     BonusFruitBoxSpawnProcent: 10
@@ -4073,7 +4072,7 @@ MonoBehaviour:
   _difficultUpData:
     SecondsUntilDifficultUp: 5
     TimeBetweenUnitSpawnsJump: 0.1
-    TimeBetweenWavesJump: 0.5
+    TimeBetweenWavesJump: 0
     MaxGameUnitsJump: 1
   _minusTimeIfContainerEmpty: 0.5
   _chanceBetweenFruitAndBonus: 50

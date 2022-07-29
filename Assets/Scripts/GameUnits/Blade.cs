@@ -8,7 +8,6 @@ public class Blade : MonoBehaviour
     [SerializeField] private float _minBladeSpeedForCut = 0.01f;
     [SerializeField] private float _bladeRadius = 0.2f;
     [SerializeField] private float _speedChangeBladeColor = 1f;
-    [SerializeField] private bool _bladeCanCut;
 
     [Space(10)]
     [SerializeField] private TrailRenderer _trailRenderer;
@@ -17,6 +16,7 @@ public class Blade : MonoBehaviour
     private Vector3 _lastFrameMousePosition;
     private Vector3 _currentFrameMousePosition;
     private Color _startBladeEndColor;
+    private bool _isFirstClick = true;
 
     private Camera _mainCamera;
 
@@ -55,32 +55,28 @@ public class Blade : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            if (_isFirstClick == true)
+            {
+                _isFirstClick = false;
+                _lastFrameMousePosition = _currentFrameMousePosition;
+            }
+
             _trailRenderer.enabled = true;
 
             Vector2 differentPosition = _currentFrameMousePosition - _lastFrameMousePosition;
 
             if (differentPosition.sqrMagnitude > _minBladeSpeedForCut)
             {
-                _bladeCanCut = true;
-            }
-            else
-            {
-                _bladeCanCut = false;
+                TryCutFruits(_currentFrameMousePosition);
             }
         }
         else
         {
             _trailRenderer.enabled = false;
-
-            _bladeCanCut = false;
+            _isFirstClick = true;
         }
 
         _lastFrameMousePosition = _currentFrameMousePosition;
-
-        if (_bladeCanCut == true)
-        {
-            TryCutFruits(_currentFrameMousePosition);
-        }
     }
 
     private void TryCutFruits(Vector2 mousePosition)

@@ -193,7 +193,7 @@ MonoBehaviour:
     ScorePrice: 1
   _magniteRadius: 8
   _magnitePower: 0.2
-  _magniteDuration: 5
+  _magniteDuration: 4
 --- !u!1001 &1402649437664479051
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -55,6 +55,7 @@ MonoBehaviour:
     MinImpulseY: 5
     MaxImpulseY: 10
   _velocity: {x: 0, y: 0}
+  TimeScale: 0
 --- !u!114 &373880143491167395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +96,8 @@ MonoBehaviour:
     ScaleSpeed: 0.2
     ScorePrice: 1
   _timeScale: 0.2
-  _timeFreeze: 2
+  _normalTimeScale: 1
+  _timeFreezeDuration: 2
 --- !u!1 &3539866333504415644
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minRotateSpeed: 50
   _maxRotateSpeed: 200
+  TimeScale: 0
 --- !u!1001 &3539866332499104879
 PrefabInstance:
   m_ObjectHideFlags: 0
