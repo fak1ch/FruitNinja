@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,20 +17,23 @@ public class MainMenuUI : MonoBehaviour
         _bestScoreText.text = $"{PlayerPrefs.GetInt(SaveKeys.BestScoreKey)}";
     }
 
-    public void StartGame(RectTransform buttonTransform)
+    public void StartGame()
     {
         if (_isOpen == true)
         {
-            Utils.PlayButtonAnimation(buttonTransform);
+            _isOpen = false;
             _loadingHandler.LoadScene("SampleScene");
         }
     }
 
-    public void ExitGame(RectTransform buttonTransform)
+    public void ExitGame()
     {
         if (_isOpen == true)
         {
-            Utils.PlayButtonAnimation(buttonTransform);
+            _isOpen = false;
+            #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+            #endif
             Application.Quit();
         }
     }

@@ -27,14 +27,6 @@ public static class Utils
         return sprites;
     }
 
-    public static void PlayButtonAnimation(Transform buttonTransform)
-    {
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(buttonTransform.DOScale(new Vector2(0.8f, 0.8f), 0.15f));
-        sequence.Append(buttonTransform.DOScale(new Vector2(1f, 1f), 0.15f));
-        sequence.PrependInterval(0.1f);
-    }
-
     public static bool CheckRandomless(int procent)
     {
         if (procent == 0)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FreezeBonus : UnitCanCut
 {
-    [SerializeField] private float _timeScale = 0.2f;
+    [SerializeField] private float _changeScale = 0.2f;
     [SerializeField] private float _normalTimeScale = 1f;
     [SerializeField] private float _timeFreezeDuration = 1f;
 
@@ -15,7 +15,7 @@ public class FreezeBonus : UnitCanCut
 
     private IEnumerator FreezeTime()
     {
-        Utils.TimeScale = _timeScale;
+        Utils.TimeScale = _changeScale;
         _mainObjects.UnitsContainer.RefreshTimeScaleForUnits();
 
         _spriteRenderer.enabled = false;
