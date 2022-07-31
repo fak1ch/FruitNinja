@@ -195,6 +195,7 @@ MonoBehaviour:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
     UITransform: {fileID: 2132205797}
+    MainCamera: {fileID: 519420029}
 --- !u!224 &59949064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -756,6 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
+  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -763,6 +765,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &519420029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac4a56a64a82a642865fd151466a891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1757,7 +1771,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 2
+    ScorePrice: 200
   - FruitSprite: {fileID: 21300000, guid: 54f37729821a47a4e842005f08d61ddc, type: 3}
     BladeEffect: {r: 0.29803923, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 0.29803923, g: 1, b: 0, a: 1}
@@ -1765,7 +1779,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 50
   - FruitSprite: {fileID: 21300000, guid: a3ea2c8d1249221478677b301eb325fa, type: 3}
     BladeEffect: {r: 1, g: 0.7604933, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.7607843, b: 0, a: 1}
@@ -1773,7 +1787,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 70
   - FruitSprite: {fileID: 21300000, guid: a563971405bda52488bfb8d7c1916e63, type: 3}
     BladeEffect: {r: 0.78751564, g: 0, b: 1, a: 1}
     ParticleSystem: {r: 0.7882353, g: 0, b: 1, a: 1}
@@ -1781,7 +1795,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 80
   - FruitSprite: {fileID: 21300000, guid: 0ee888b06f6a9b64794fdef9434551d0, type: 3}
     BladeEffect: {r: 1, g: 0.46949857, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 0.47058824, b: 0, a: 1}
@@ -1789,7 +1803,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 100
   - FruitSprite: {fileID: 21300000, guid: 71629d2c895886247825e9c272377c42, type: 3}
     BladeEffect: {r: 1, g: 1, b: 0, a: 1}
     ParticleSystem: {r: 1, g: 1, b: 0, a: 1}
@@ -1797,7 +1811,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 3
+    ScorePrice: 180
   - FruitSprite: {fileID: 21300000, guid: 435333f7d609fe740aa8f4f057a66fae, type: 3}
     BladeEffect: {r: 1, g: 0.41037738, b: 0.44426376, a: 1}
     ParticleSystem: {r: 1, g: 0.4117647, b: 0.44313726, a: 1}
@@ -1805,7 +1819,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 166
   - FruitSprite: {fileID: 21300000, guid: 9c86f086f28437f48aeab89da1bd7ec3, type: 3}
     BladeEffect: {r: 1, g: 0.61466914, b: 0.3160377, a: 1}
     ParticleSystem: {r: 1, g: 0.6156863, b: 0.31764707, a: 1}
@@ -1813,7 +1827,7 @@ MonoBehaviour:
     StartScale: 1.2
     EndScale: 0.8
     ScaleSpeed: 0.2
-    ScorePrice: 1
+    ScorePrice: 133
   _fruitPrefab: {fileID: 5048751070324639289, guid: 6981a4e7ed1bfd344bce8c7d5ca33fab, type: 3}
   _bonusHeartPrefab: {fileID: 1130858029383175119, guid: 52ecebe7b5951a64daeab955646c7d61, type: 3}
   _bonusIceCubePrefab: {fileID: 373880143491167395, guid: 0571ea7c189c4c7418e9db981e25099e, type: 3}
@@ -1882,7 +1896,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345566609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac8205cbedb20c4893a526cce7a0e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1892,7 +1906,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1913,22 +1927,32 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1345566612}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickMy:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1886099292}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: RestartGame
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1345566610}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RectTransform: {fileID: 1345566610}
+  ButtonImage: {fileID: 1345566612}
+  Settings: {fileID: 11400000, guid: 23a47de99cc9d604d898cc93ad694ad0, type: 2}
+  PressedColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
+  PressedScaleProcent: 0.8
+  ScaleDuration: 0.2
+  ChangeColorDuration: 0.2
 --- !u!114 &1345566612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,7 +2408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558889843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac8205cbedb20c4893a526cce7a0e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -2394,7 +2418,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2415,22 +2439,32 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1558889846}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickMy:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1886099292}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: ReturnToMenu
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1558889844}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RectTransform: {fileID: 1558889844}
+  ButtonImage: {fileID: 1558889846}
+  Settings: {fileID: 11400000, guid: 23a47de99cc9d604d898cc93ad694ad0, type: 2}
+  PressedColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
+  PressedScaleProcent: 0.8
+  ScaleDuration: 0.2
+  ChangeColorDuration: 0.2
 --- !u!114 &1558889846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,6 +2793,7 @@ MonoBehaviour:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
     UITransform: {fileID: 2132205797}
+    MainCamera: {fileID: 519420029}
 --- !u!1 &1671175397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,10 +2838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37a2b1b4ef9d434896324c1db693140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minBladeSpeedForCut: 0.01
+  _minBladeSpeedForCut: 0.4
   _bladeRadius: 1.2
   _speedChangeBladeColor: 1
-  _bladeCanCut: 0
   _trailRenderer: {fileID: 1671175401}
   _unitsContainer: {fileID: 1303467492}
 --- !u!96 &1671175401
@@ -3638,6 +3672,7 @@ MonoBehaviour:
     UnitsContainer: {fileID: 1303467492}
     HealthHandler: {fileID: 1934624102}
     UITransform: {fileID: 2132205797}
+    MainCamera: {fileID: 519420029}
 --- !u!1 &1934624100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,15 +4100,15 @@ MonoBehaviour:
     MaxGameUnitsInWave: 3
     MinFruitsInWave: 1
     BombSpawnProcent: 15
-    BonusHeartSpawnProcent: 5
+    BonusHeartSpawnProcent: 30
     BonusIceCubeSpawnProcent: 10
     BonusMagniteSpawnProcent: 10
     BonusFruitBoxSpawnProcent: 10
     maxBonusCountInWave: 1
   _difficultUpData:
     SecondsUntilDifficultUp: 5
-    TimeBetweenUnitSpawnsJump: 0.1
-    TimeBetweenWavesJump: 0.5
+    TimeBetweenUnitSpawnsJump: 0.025
+    TimeBetweenWavesJump: 0
     MaxGameUnitsJump: 1
   _minusTimeIfContainerEmpty: 0.5
   _chanceBetweenFruitAndBonus: 50

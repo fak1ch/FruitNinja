@@ -10,6 +10,8 @@ public class PhysicalRotation : MonoBehaviour
     private float _rotateMultiplier = 1f;
     private float _rotateSpeed;
 
+    public float TimeScale;
+
     public float Multiplier
     {
         get
@@ -48,6 +50,6 @@ public class PhysicalRotation : MonoBehaviour
 
     private void RotateAroundLocal()
     {
-        transform.Rotate(0, 0, _rotateSpeed * Time.deltaTime * _rotateMultiplier);
+        transform.Rotate(0, 0, _rotateSpeed * Time.deltaTime * _rotateMultiplier * TimeScale);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Effect : MonoBehaviour
 {
@@ -21,16 +22,15 @@ public class Effect : MonoBehaviour
 
     private void Start()
     {
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOMoveY(transform.position.y - _offsetValueY, _animationMoveSpeed));
-        mySequence.Insert(0f, _spriteRenderer.DOFade(0, _animationFadeSpeed));
+        DOTween.Init(true, true, LogBehaviour.Default).SetCapacity(100,200);
 
-        StartCoroutine(DestroyGameObject(_timeUntilDestroy));
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Append(transform.DOMoveY(transform.position.y - _offsetValueY, _animationMoveSpeed).OnComplete(DestroyGameObject));
+        mySequence.Insert(0f, _spriteRenderer.DOFade(0, _animationFadeSpeed));
     }
 
-    private IEnumerator DestroyGameObject(float time)
+    private void DestroyGameObject()
     {
-        yield return new WaitForSeconds(_timeUntilDestroy);
         Destroy(gameObject);
     }
 }

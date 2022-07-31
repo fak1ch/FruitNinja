@@ -21,10 +21,13 @@ public class GameUnit : MonoBehaviour
     protected bool _canChangeGameUnitScale = true;
     protected bool _canChangeShadowScaleAndPosition = true;
 
+    private float _timeScale;
+
     public PhysicalMovement PhysicalMovement => _physicalMovement;
 
     protected virtual void Start()
     {
+        RefreshTimeScale();
         _spriteObject = _physicalRotation.gameObject;
         _spriteObject.transform.localScale = new Vector2(_startScale, _startScale);
 
@@ -54,12 +57,21 @@ public class GameUnit : MonoBehaviour
     {
         Vector2 currentScale = _spriteObject.transform.localScale;
 
-        currentScale.x -= Time.deltaTime * _scaleSpeed;
-        currentScale.y -= Time.deltaTime * _scaleSpeed;
+        currentScale.x -= Time.deltaTime * _scaleSpeed * _timeScale;
+        currentScale.y -= Time.deltaTime * _scaleSpeed * _timeScale;
 
         currentScale.x = Mathf.Clamp(currentScale.x, _endScale, currentScale.x);
         currentScale.y = Mathf.Clamp(currentScale.y, _endScale, currentScale.y);
 
         _spriteObject.transform.localScale = currentScale;
+    }
+
+    public void RefreshTimeScale()
+    {
+        float timeScale = Utils.TimeScale;
+
+        _timeScale = timeScale;
+        _physicalMovement.TimeScale = timeScale;
+        _physicalRotation.TimeScale = timeScale;
     }
 }

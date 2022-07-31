@@ -5,8 +5,8 @@ using UnityEngine;
 public class FruitBoxBonus : UnitCanCut
 {
     [SerializeField] private float _offsetX;
-    [SerializeField] private float _offsetY;
-    [SerializeField] private float _explosivePower = 0.02f;
+    [SerializeField] private float _plusVelocityVectorY = 2;
+    [SerializeField] private float _fruitsImmortalityTime = 0.25f;
     [SerializeField] private int _minFruitsCount = 3;
     [SerializeField] private int _maxFruitsCount = 5;
     [SerializeField] private Sprite _emptyBoxSprite;
@@ -23,12 +23,12 @@ public class FruitBoxBonus : UnitCanCut
         {
             Vector2 position = transform.position;
             float offsetX = Random.Range(-_offsetX, _offsetX);
-            float offsetY = Random.Range(-_offsetY, _offsetY);
             position.x += offsetX;
-            position.y += offsetY;
+            position.y = transform.position.y;
 
             var prefab = _mainObjects.UnitsContainer.GetRandomFruitPrefab();
             var fruit = Instantiate(prefab, position, Quaternion.identity);
+            fruit.SetImmortality(_fruitsImmortalityTime);
             fruit.SetMainObjects(_mainObjects);
             fruits.Add(fruit);
             _mainObjects.UnitsContainer.AddUnit(fruit);
@@ -36,9 +36,8 @@ public class FruitBoxBonus : UnitCanCut
 
         for (int i = 0; i < fruits.Count; i++)
         {
-            float distance = Vector2.Distance(transform.position, fruits[i].transform.position);
-            Vector2 moveVector = fruits[i].transform.position - transform.position;
-            moveVector *= _explosivePower / distance;
+            Vector2 moveVector = _physicalMovement.GetVelocityVector();
+            moveVector.y += _plusVelocityVectorY;
             fruits[i].PhysicalMovement.AddToVelocityVector(moveVector);
         }
     }

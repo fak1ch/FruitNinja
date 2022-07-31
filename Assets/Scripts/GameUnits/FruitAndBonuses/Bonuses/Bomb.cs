@@ -9,6 +9,12 @@ public class Bomb : UnitCanCut
     [SerializeField] private int _healthCount = 1;
     [SerializeField] private GameObject _boomLabelEffect;
 
+    [Space(10)]
+    [SerializeField] private float _shakeDuration = 1f;
+    [SerializeField] private float _shakeStrength = 1f;
+    [SerializeField] private int _shakeVibrato = 10;
+    [SerializeField] private float _shakeRandomless = 1f;
+
     protected override void CutResult()
     {
         _mainObjects.HealthHandler.RemoveHealth(_healthCount);
@@ -27,7 +33,9 @@ public class Bomb : UnitCanCut
 
         Instantiate(_boomLabelEffect, transform.position, Quaternion.identity);
 
-        base.CutResult();
+        _mainObjects.MainCamera.ShakeCamera(_shakeDuration, _shakeStrength, _shakeVibrato, _shakeRandomless);
+
+        Destroy(gameObject);
     }
 
     protected override void CutSprite(Vector2 mousePosition)

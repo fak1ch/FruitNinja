@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class HearthUI : MonoBehaviour
 {
+    [SerializeField] private float _moveDuration = 2f;
     private HealthHandler _healthHandler;
     private int _addHealthCount;
 
@@ -15,7 +16,18 @@ public class HearthUI : MonoBehaviour
         _addHealthCount = healthCount;
 
         DOTween.Init(false);
-        transform.DOMove(healthHandler.GetPositionToNextHeart(), 2).OnComplete(HealthComeToPosition);
+
+
+        var position = healthHandler.GetPositionToNextHeart();
+
+        if (position == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            transform.DOMove((Vector2)position, _moveDuration).OnComplete(HealthComeToPosition);
+        }
     }
 
     private void HealthComeToPosition()

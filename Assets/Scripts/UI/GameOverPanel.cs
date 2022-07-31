@@ -37,12 +37,11 @@ public class GameOverPanel : MonoBehaviour
         _isButtonsBlocked = false;
     }
 
-    public void RestartGame(RectTransform buttonTransform)
+    public void RestartGame()
     {
         if (_isButtonsBlocked == false)
         {
             _isButtonsBlocked = true;
-            Utils.PlayButtonAnimation(buttonTransform);
             _canvasGroup.DOFade(0, 1).OnComplete(RestartGameCallback);
         }
     }
@@ -59,12 +58,11 @@ public class GameOverPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ReturnToMenu(RectTransform buttonTransform)
+    public void ReturnToMenu()
     {
         if (_isButtonsBlocked == false)
         {
             _isButtonsBlocked = true;
-            Utils.PlayButtonAnimation(buttonTransform);
             _loadingHandler.LoadScene("MainMenu");
         }
     }
