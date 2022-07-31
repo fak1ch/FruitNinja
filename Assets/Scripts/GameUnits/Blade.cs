@@ -96,16 +96,18 @@ public class Blade : MonoBehaviour
 
         for(int i = 0; i < gameUnits.Count; i++)
         {
-            _unitsContainer.RemoveUnit(gameUnits[i]);
-            gameUnits[i].CutThisGameUnit(mousePosition);
-
-            if (gameUnits[i].gameObject.TryGetComponent(out Fruit fruit) == true)
+            if (gameUnits[i].CutThisGameUnit(mousePosition) == true)
             {
-                fruitCuttenCount++;
-                totalScore += fruit.GetScorePrice();
-            }
+                _unitsContainer.RemoveUnit(gameUnits[i]);
 
-            newBladeColorEffect = gameUnits[i].BladeColorCut;
+                if (gameUnits[i].gameObject.TryGetComponent(out Fruit fruit) == true)
+                {
+                    fruitCuttenCount++;
+                    totalScore += fruit.GetScorePrice();
+                }
+
+                newBladeColorEffect = gameUnits[i].BladeColorCut;
+            }
         }
 
         _trailRenderer.endColor = newBladeColorEffect;

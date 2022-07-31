@@ -55,6 +55,7 @@ MonoBehaviour:
     MinImpulseY: 5
     MaxImpulseY: 10
   _velocity: {x: 0, y: 0}
+  TimeScale: 0
 --- !u!114 &279477269014366694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +94,9 @@ MonoBehaviour:
     EndScale: 0.8
     ScaleSpeed: 0.2
     ScorePrice: 1
-  _offsetX: 1
-  _offsetY: 1
-  _explosivePower: 0.5
+  _offsetX: 3
+  _plusVelocityVectorY: 0.7
+  _fruitsImmortalityTime: 0.25
   _minFruitsCount: 3
   _maxFruitsCount: 5
   _emptyBoxSprite: {fileID: 21300000, guid: 675a74b837350ec438f8c743d1fa8bd0, type: 3}
@@ -196,8 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432bf0004c6ec8740bbe5268d625d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minRotateSpeed: 50
-  _maxRotateSpeed: 200
+  _minRotateSpeed: 0
+  _maxRotateSpeed: 0
+  TimeScale: 0
 --- !u!1001 &3773258904787050878
 PrefabInstance:
   m_ObjectHideFlags: 0

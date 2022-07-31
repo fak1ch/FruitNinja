@@ -18,20 +18,24 @@ public class UnitCanCut : GameUnit
     [SerializeField] private Effect[] _effects;
 
     protected MainObjects _mainObjects;
+    private bool _immortalityOn = false;
+
+
     public FruitData _currentUnitData;
     public Color BladeColorCut => _bladeColorCut;
 
-
-    private void Awake()
+    public virtual bool CutThisGameUnit(Vector2 mousePosition)
     {
-        StartCoroutine(DestroyGameObject(_timeUntilDestroy));
-    }
+        if (_immortalityOn == false)
+        {
+            CutSprite(mousePosition);
+            CreateEffects();
+            CutResult();
 
-    public virtual void CutThisGameUnit(Vector2 mousePosition)
-    {
-        CutSprite(mousePosition);
-        CreateEffects();
-        CutResult();
+            return true;
+        }
+
+        return false;
     }
 
     private void CreateEffects()
@@ -71,7 +75,7 @@ public class UnitCanCut : GameUnit
 
     protected virtual void CutResult()
     {
-        StartCoroutine(DestroyGameObject(0));
+        Destroy(gameObject);
     }
 
     public void SetMainObjects(MainObjects mainObjects)
@@ -79,10 +83,15 @@ public class UnitCanCut : GameUnit
         _mainObjects = mainObjects;
     }
 
-    private IEnumerator DestroyGameObject(float time)
+    public void SetImmortality(float time)
     {
+        StartCoroutine(ImmortalityWork(time));
+    }
+
+    private IEnumerator ImmortalityWork(float time)
+    {
+        _immortalityOn = true;
         yield return new WaitForSeconds(time);
-        _mainObjects.UnitsContainer.RemoveUnit(this);
-        Destroy(gameObject);
+        _immortalityOn = false;
     }
 }

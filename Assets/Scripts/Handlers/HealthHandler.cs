@@ -79,17 +79,24 @@ public class HealthHandler : MonoBehaviour
         AddHealth(_maxHealth);
     }
 
-    public Vector2 GetPositionToNextHeart()
+    public Vector2? GetPositionToNextHeart()
     {
-        if (_offset == 0)
+        if (_health.Count > 0)
         {
-            _offset = _health[0].transform.position.x - _health[1].transform.position.x;
+            if (_offset == 0 && _health.Count > 2) 
+            {
+                _offset = _health[0].transform.position.x - _health[1].transform.position.x;
+            }
+
+            Vector2 lastHeartPosition = _health[0].transform.position;
+            lastHeartPosition.x += _offset;
+
+            return lastHeartPosition;
         }
-
-        Vector2 lastHeartPosition = _health[0].transform.position;
-        lastHeartPosition.x += _offset;
-
-        return lastHeartPosition;
+        else
+        {
+            return null;
+        }
     }
 
     private void CheckZeroHealth()
